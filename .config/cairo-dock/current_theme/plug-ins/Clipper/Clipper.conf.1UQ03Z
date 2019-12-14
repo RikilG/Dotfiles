@@ -1,0 +1,168 @@
+#1.1.9
+
+#[/usr/share/cairo-dock/icons/icon-icons.svg]
+
+[Icon]
+
+#F[Icon]
+frame_maininfo=
+
+#d Name of the dock it belongs to:
+dock name=_MainDock_
+
+#s[Default] Name of the icon as it will appear in its caption in the dock:
+name=
+#v
+sep_display=
+
+#g+[Default] Image filename:
+icon=
+
+#j+[0;128] Desired icon size for this applet
+#{Set to 0 to use the default applet size}
+icon size=0;0;
+
+order=7.5
+
+#A
+handbook=Clipper
+
+
+#[/usr/share/cairo-dock/icons/icon-desklets.svg]
+
+[Desklet]
+
+#X[Position]
+frame_pos=
+
+#b Lock position?
+#{If locked, the desklet cannot be moved by simply dragging it with the left mouse button. It can still be moved with ALT + left-click.}
+locked=false
+
+#j[24;512] Desklet dimensions (width x height):
+#{Depending on your WindowManager, you may be able to resize this with ALT + middle-click or ALT + left-click.}
+size=96;96;
+
+#i[-2048;2048] Desklet position (x, y):
+#{Depending on your WindowManager, you may be able to move this with ALT + left-click.}
+x position=-655
+#i[-2048;2048] ...
+y position=-391
+
+#I[-180;180] Rotation:
+#{You can quickly rotate the desklet with the mouse, by dragging the little buttons on its left and top sides.}
+rotation=0
+
+#X[Visibility]
+frame_visi=
+
+#b Is detached from the dock
+initially detached=false
+#l[Normal;Keep above;Keep below;Keep on widget layer;Reserve space] Visibility:
+accessibility=0
+#b Should be visible on all desktops?
+sticky=true
+
+#F[Decorations;preferences-desktop-theme]
+frame_deco=
+
+#o+ Choose a decoration theme for this desklet:
+#{Choose 'Custom decorations' to define your own decorations below.}
+decorations=default
+
+#v
+sep_deco=
+
+#g+ Background image:
+#{Image to be displayed below drawings, e.g. a frame. Leave empty for no image.}
+bg desklet=
+#e+[0;1] Background transparency:
+bg alpha=1
+#i+[0;256] Left offset:
+#{in pixels. Use this to adjust the left position of drawings.}
+left offset=0
+#i+[0;256] Top offset:
+#{in pixels. Use this to adjust the top position of drawings.}
+top offset=0
+#i+[0;256] Right offset:
+#{in pixels. Use this to adjust the right position of drawings.}
+right offset=0
+#i+[0;256] Bottom offset:
+#{in pixels. Use this to adjust the bottom position of drawings.}
+bottom offset=0
+#g+ Foreground image:
+#{Image to be displayed above the drawings, e.g. a reflection. Leave empty for no image.}
+fg desklet=
+#e+[0;1] Foreground tansparency:
+fg alpha=1
+
+use size=
+no input=0
+depth rotation y=0
+depth rotation x=0
+
+width=92
+height=92
+
+num desktop=-1
+
+[Configuration]
+
+#F[Items;view-sort-descending]
+frame_item=
+
+#l[None;Clipboard;Selection;Both] Which items should be remembered?
+#{Clipboard items are those you get with CTRL+c. Selection items are those you get by selecting some text with the mouse.}
+item type=1
+
+#I[1;50] Number of items:
+nb items=25
+
+#b Remember items between 2 sessions ?
+remember=true
+
+last items=Enjoy Cairo-Dock!=-+-=grep -r '^\\(CONTROL\\|ENABLE\\)_' /etc/laptop-mode/conf.d=-+-=echo "\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n" && neofetch=-+-=474514=-+-=<Company name><Your name> Report 1=-+-=Voiceqube Rikil Gajarla Report 1=-+-=/mnt/Win10/Users/rikil/OneDrive/Deskto=-+-=git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d=-+-=There will be a huge demand for voice based applications in coming future. The aim of\nVoiceqube is to serve this demand by providing various voice skills and software.=-+-=includes providing custom alexa and google home\nskills/applications to companies who want to extend their existing applications to include\nvoice support over popular devices like google home and alexa.=-+-=\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\nclass Something\n{\nprivate:\n    int m_value1;\n    double m_value2;\n    char m_value3;\n \npublic:\n    Something() : m_value1(1), m_value2(2.2), m_value3('c') // everything on one line\n    {\n    }\n};=-+-=private:\n    int m_value1;\n    double m_value2;\n    char m_value3;\n \npublic:\n    Something(int value1, double value2, char value3='c')\n        : m_value1(value1), m_value2(value2), m_value3(value3) // directly initialize our member variables\n    {\n    // No need for assignment here\n    }\n \n    void print()\n    {\n         std::cout << "Something(" << m_value1 << ", " << m_value2 << ", " << m_value3 << ")\\n";\n    }\n \n};=-+-=class Calc\n{\nprivate:\n    int m_value = 0;\n \npublic:\n    Calc(int value=0);\n \n    Calc& add(int value);\n    Calc& sub(int value);\n    Calc& mult(int value);\n \n    int getValue() { return m_value; }\n};\n \nCalc::Calc(int value): m_value(value)\n{\n}\n \nCalc& Calc::add(int value)\n{\n    m_value += value;\n    return *this;\n}\n \nCalc& Calc::sub(int value) \n{\n    m_value -= value;\n    return *this;\n}\n \nCalc& Calc::mult(int value)\n{\n    m_value *= value;\n    return *this;\n}=-+-=https://www.learncpp.com/cpp-tutorial/813-friend-functions-and-classes/=-+-=mostly=-+-=https://github.com/TheDreamSaver/awesome-alexa=-+-=https://drive.google.com/open?id=1Zyp6ckuw-HDcb0_9j7_dmbMWYyrJDQLg=-+-=https://doc-00-ag-docs.googleusercontent.com/docs/securesc/b1lu4re238s0i2998e3pj59tk8s2fmok/0jehdnliis5snve9mq1o7k8j0afvtcr7/1561118400000/03883668282855633235/18374752177909004333/1Zyp6ckuw-HDcb0_9j7_dmbMWYyrJDQLg?e=download=-+-=jceb/vim-orgmode=-+-=/mnt/Win10/Users/rikil/OneDrive/Desktop
+
+#B Separate clipboard and selection?
+#{It is especially useful if you often select text with the mouse and don't want to loose your clipboard items due to too many items in the selection.}
+separate=false
+
+#I[1;50] If so, number of selection items:
+nb items2=10
+
+#b Paste into Clipboard?
+#{When you click on an item, its content will become accessible with CTRL+v}
+paste clipboard=true
+
+#b Paste into Selection?
+#{When you click on an item, its content will become accessible with the middle-click}
+paste selection=false
+
+#k Shortkey to pop-up the items menu:
+shortkey=<Control>F8
+
+#b Pop-up menus at mouse position?
+menu on mouse=true
+
+
+#F[Actions;system-run]
+frame_act=
+
+#B[2] Enable actions?
+#{If some actions are associated with an item, they will be proposed when the item is created.}
+enable actions=false
+
+#b Replay actions?
+#{Display actions when selecting an item in the history.}
+replay action=true
+
+#I[1;12] Duration of the action menu:
+#{in seconds.}
+action duration=4
+
+
+#F[Persistent items;drive-harddisk]
+frame_per=
+
+#U A list of persistent items which can be accessed with middle-click:/
+persistent=

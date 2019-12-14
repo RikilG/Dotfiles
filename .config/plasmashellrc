@@ -1,0 +1,108 @@
+[Containments][1][General]
+ToolBoxButtonState=top
+ToolBoxButtonX=1786
+ToolBoxButtonY=26
+arrangement=1
+iconSize=3
+toolTips=true
+
+[Containments][17][General]
+AppletOrder=18;19;31;21;23;24
+
+[Containments][2][General]
+AppletOrder=3;4;16;6;8;9
+
+[Containments][21][General]
+AppletOrder=22;23;24;25;27;28
+
+[Containments][22][General]
+extraItems=org.kde.plasma.volume,org.kde.plasma.clipboard,org.kde.plasma.keyboardindicator,org.kde.plasma.battery,org.kde.plasma.notifications,org.kde.plasma.networkmanagement,org.kde.plasma.mediacontroller,org.kde.plasma.devicenotifier
+knownItems=org.kde.plasma.volume,org.kde.plasma.clipboard,org.kde.plasma.keyboardindicator,org.kde.plasma.battery,org.kde.plasma.notifications,org.kde.plasma.networkmanagement,org.kde.plasma.mediacontroller,org.kde.plasma.devicenotifier
+
+[Containments][26][General]
+extraItems=org.kde.plasma.volume,org.kde.plasma.clipboard,org.kde.plasma.keyboardindicator,org.kde.plasma.battery,org.kde.plasma.notifications,org.kde.plasma.networkmanagement,org.kde.plasma.mediacontroller,org.kde.plasma.devicenotifier
+knownItems=org.kde.plasma.volume,org.kde.plasma.clipboard,org.kde.plasma.keyboardindicator,org.kde.plasma.battery,org.kde.plasma.notifications,org.kde.plasma.networkmanagement,org.kde.plasma.mediacontroller,org.kde.plasma.devicenotifier
+
+[Containments][32][General]
+AppletOrder=33;34;36
+
+[Containments][37][General]
+extraItems=org.kde.plasma.volume,org.kde.plasma.clipboard,org.kde.plasma.keyboardindicator,org.kde.plasma.battery,org.kde.plasma.notifications,org.kde.plasma.networkmanagement,org.kde.plasma.mediacontroller,org.kde.plasma.devicenotifier
+knownItems=org.kde.plasma.volume,org.kde.plasma.clipboard,org.kde.plasma.keyboardindicator,org.kde.plasma.battery,org.kde.plasma.notifications,org.kde.plasma.networkmanagement,org.kde.plasma.mediacontroller,org.kde.plasma.devicenotifier
+
+[Containments][59][General]
+ToolBoxButtonState=top
+ToolBoxButtonX=1786
+ToolBoxButtonY=26
+arrangement=1
+iconSize=3
+toolTips=true
+
+[Containments][64][General]
+ToolBoxButtonState=left
+ToolBoxButtonY=26
+url=file:///mnt/STASH/@RIKIL/_Projects/@programming
+
+[Containments][7][General]
+extraItems=org.kde.plasma.volume,org.kde.plasma.clipboard,org.kde.plasma.keyboardindicator,org.kde.plasma.battery,org.kde.plasma.notifications,org.kde.plasma.networkmanagement,org.kde.plasma.mediacontroller,org.kde.plasma.devicenotifier
+knownItems=org.kde.plasma.volume,org.kde.plasma.clipboard,org.kde.plasma.keyboardindicator,org.kde.plasma.battery,org.kde.plasma.notifications,org.kde.plasma.networkmanagement,org.kde.plasma.mediacontroller,org.kde.plasma.devicenotifier
+
+[Containments][89][General]
+positions=4,17,desktop:/Hello World,0,0,desktop:/virtualbox.desktop,3,8
+sortMode=-1
+
+[Containments][90][General]
+ToolBoxButtonState=top
+ToolBoxButtonX=1890
+ToolBoxButtonY=26
+positions=4,17,desktop:/Hello World,0,0,desktop:/virtualbox.desktop,3,8
+sortMode=-1
+
+[Containments][91][General]
+ToolBoxButtonState=top
+ToolBoxButtonX=1890
+ToolBoxButtonY=26
+positions=1,17,desktop:/Hello World,0,0,desktop:/Windows-10.desktop,0,1,desktop:/virtualbox.desktop,0,2
+sortMode=-1
+
+[DownloadDialog Settings]
+Height 1080=494
+Width 1920=700
+
+[KFileDialog Settings]
+Recent Files[$e]=Abstract-Dark-blue-color-polygon-art.jpg,file:$HOME/Pictures/arch2.png,file:$HOME/Pictures/arch.png,file:$HOME/Downloads/windows-lasers.jpg,file:$HOME/Downloads/Windows-10.png,file:$HOME/Downloads/mikael-gustafsson-amongtrees-2-8.jpg,file:$HOME/Downloads/wallpaper.jpg,file:$HOME/Downloads/sunset.jpg,file:$HOME/Downloads/sky.jpg,file:$HOME/Downloads/creek.png,file:$HOME/Downloads/city3.jpg,file:$HOME/Downloads/city.jpg,file:$HOME/Downloads/circuit.jpg,file:$HOME/Downloads/background.png,file:$HOME/Downloads/arch-digitized.jpg,file:$HOME/Downloads/Abstract-Dark-blue-color-polygon-art.jpg
+Recent URLs[$e]=file:$HOME/Pictures/
+detailViewIconSize=0
+
+[KPropertiesDialog]
+Height 1080=448
+Width 1920=410
+
+[PlasmaRunnerManager]
+LaunchCounts=1 services_virtualbox.desktop,1 services_blueman-manager.desktop,1 services_htop.desktop,1 services_deadbeef.desktop,8 services_systemsettings.desktop
+pluginWhiteList=services,shell,bookmarks,baloosearch,locations
+
+[PlasmaViews][Panel 17][Horizontal1920]
+thickness=36
+
+[PlasmaViews][Panel 2]
+panelVisibility=0
+
+[PlasmaViews][Panel 2][Horizontal1920]
+thickness=30
+
+[PlasmaViews][Panel 21][Horizontal1920]
+thickness=36
+
+[PlasmaViews][Panel 32][Horizontal1920]
+thickness=27
+
+[PlasmaViews][Panel 36][Horizontal1920]
+thickness=36
+
+[ScreenConnectors]
+0=eDP1
+1=HDMI1
+
+[Updates]
+performed=/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/obsolete_kickoffrc.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/move_desktop_layout_config.js

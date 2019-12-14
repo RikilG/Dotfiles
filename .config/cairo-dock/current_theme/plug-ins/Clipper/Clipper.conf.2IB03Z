@@ -1,0 +1,168 @@
+#1.1.9
+
+#[/usr/share/cairo-dock/icons/icon-icons.svg]
+
+[Icon]
+
+#F[Icon]
+frame_maininfo=
+
+#d Name of the dock it belongs to:
+dock name=_MainDock_
+
+#s[Default] Name of the icon as it will appear in its caption in the dock:
+name=
+#v
+sep_display=
+
+#g+[Default] Image filename:
+icon=
+
+#j+[0;128] Desired icon size for this applet
+#{Set to 0 to use the default applet size}
+icon size=0;0;
+
+order=7.5
+
+#A
+handbook=Clipper
+
+
+#[/usr/share/cairo-dock/icons/icon-desklets.svg]
+
+[Desklet]
+
+#X[Position]
+frame_pos=
+
+#b Lock position?
+#{If locked, the desklet cannot be moved by simply dragging it with the left mouse button. It can still be moved with ALT + left-click.}
+locked=false
+
+#j[24;512] Desklet dimensions (width x height):
+#{Depending on your WindowManager, you may be able to resize this with ALT + middle-click or ALT + left-click.}
+size=96;96;
+
+#i[-2048;2048] Desklet position (x, y):
+#{Depending on your WindowManager, you may be able to move this with ALT + left-click.}
+x position=-655
+#i[-2048;2048] ...
+y position=-391
+
+#I[-180;180] Rotation:
+#{You can quickly rotate the desklet with the mouse, by dragging the little buttons on its left and top sides.}
+rotation=0
+
+#X[Visibility]
+frame_visi=
+
+#b Is detached from the dock
+initially detached=false
+#l[Normal;Keep above;Keep below;Keep on widget layer;Reserve space] Visibility:
+accessibility=0
+#b Should be visible on all desktops?
+sticky=true
+
+#F[Decorations;preferences-desktop-theme]
+frame_deco=
+
+#o+ Choose a decoration theme for this desklet:
+#{Choose 'Custom decorations' to define your own decorations below.}
+decorations=default
+
+#v
+sep_deco=
+
+#g+ Background image:
+#{Image to be displayed below drawings, e.g. a frame. Leave empty for no image.}
+bg desklet=
+#e+[0;1] Background transparency:
+bg alpha=1
+#i+[0;256] Left offset:
+#{in pixels. Use this to adjust the left position of drawings.}
+left offset=0
+#i+[0;256] Top offset:
+#{in pixels. Use this to adjust the top position of drawings.}
+top offset=0
+#i+[0;256] Right offset:
+#{in pixels. Use this to adjust the right position of drawings.}
+right offset=0
+#i+[0;256] Bottom offset:
+#{in pixels. Use this to adjust the bottom position of drawings.}
+bottom offset=0
+#g+ Foreground image:
+#{Image to be displayed above the drawings, e.g. a reflection. Leave empty for no image.}
+fg desklet=
+#e+[0;1] Foreground tansparency:
+fg alpha=1
+
+use size=
+no input=0
+depth rotation y=0
+depth rotation x=0
+
+width=92
+height=92
+
+num desktop=-1
+
+[Configuration]
+
+#F[Items;view-sort-descending]
+frame_item=
+
+#l[None;Clipboard;Selection;Both] Which items should be remembered?
+#{Clipboard items are those you get with CTRL+c. Selection items are those you get by selecting some text with the mouse.}
+item type=1
+
+#I[1;50] Number of items:
+nb items=25
+
+#b Remember items between 2 sessions ?
+remember=true
+
+last items=Voiceqube Rikil Gajarla Report 1=-+-=/mnt/Win10/Users/rikil/OneDrive/Deskto=-+-=git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d=-+-=There will be a huge demand for voice based applications in coming future. The aim of\nVoiceqube is to serve this demand by providing various voice skills and software.=-+-=includes providing custom alexa and google home\nskills/applications to companies who want to extend their existing applications to include\nvoice support over popular devices like google home and alexa.=-+-=\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\nclass Something\n{\nprivate:\n    int m_value1;\n    double m_value2;\n    char m_value3;\n \npublic:\n    Something() : m_value1(1), m_value2(2.2), m_value3('c') // everything on one line\n    {\n    }\n};=-+-=private:\n    int m_value1;\n    double m_value2;\n    char m_value3;\n \npublic:\n    Something(int value1, double value2, char value3='c')\n        : m_value1(value1), m_value2(value2), m_value3(value3) // directly initialize our member variables\n    {\n    // No need for assignment here\n    }\n \n    void print()\n    {\n         std::cout << "Something(" << m_value1 << ", " << m_value2 << ", " << m_value3 << ")\\n";\n    }\n \n};=-+-=class Calc\n{\nprivate:\n    int m_value = 0;\n \npublic:\n    Calc(int value=0);\n \n    Calc& add(int value);\n    Calc& sub(int value);\n    Calc& mult(int value);\n \n    int getValue() { return m_value; }\n};\n \nCalc::Calc(int value): m_value(value)\n{\n}\n \nCalc& Calc::add(int value)\n{\n    m_value += value;\n    return *this;\n}\n \nCalc& Calc::sub(int value) \n{\n    m_value -= value;\n    return *this;\n}\n \nCalc& Calc::mult(int value)\n{\n    m_value *= value;\n    return *this;\n}=-+-=https://www.learncpp.com/cpp-tutorial/813-friend-functions-and-classes/=-+-=mostly=-+-=https://github.com/TheDreamSaver/awesome-alexa=-+-=https://drive.google.com/open?id=1Zyp6ckuw-HDcb0_9j7_dmbMWYyrJDQLg=-+-=https://doc-00-ag-docs.googleusercontent.com/docs/securesc/b1lu4re238s0i2998e3pj59tk8s2fmok/0jehdnliis5snve9mq1o7k8j0afvtcr7/1561118400000/03883668282855633235/18374752177909004333/1Zyp6ckuw-HDcb0_9j7_dmbMWYyrJDQLg?e=download=-+-=jceb/vim-orgmode=-+-=/mnt/Win10/Users/rikil/OneDrive/Desktop=-+-=4/eAEh5oPwtmhzs1ScqqdLOvSiu4jXL7E_Awvn5jdpWVnNN-DX6gsj2Go=-+-=12193=-+-=12647=-+-=18112=-+-=Describe the technology &amp; design of 3 best comparable products in the industry.=-+-=Mention 3 main aspects of technology &amp; architecture where the best products are\nsuperior. Describe these aspects.=-+-=Make one recommendation which is vital for improving your product. Justify your\nrecommendation.=-+-=Alexa=-+-=data:image/jpeg;base64,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-+-=Siri
+
+#B Separate clipboard and selection?
+#{It is especially useful if you often select text with the mouse and don't want to loose your clipboard items due to too many items in the selection.}
+separate=false
+
+#I[1;50] If so, number of selection items:
+nb items2=10
+
+#b Paste into Clipboard?
+#{When you click on an item, its content will become accessible with CTRL+v}
+paste clipboard=true
+
+#b Paste into Selection?
+#{When you click on an item, its content will become accessible with the middle-click}
+paste selection=false
+
+#k Shortkey to pop-up the items menu:
+shortkey=<Control>F8
+
+#b Pop-up menus at mouse position?
+menu on mouse=true
+
+
+#F[Actions;system-run]
+frame_act=
+
+#B[2] Enable actions?
+#{If some actions are associated with an item, they will be proposed when the item is created.}
+enable actions=false
+
+#b Replay actions?
+#{Display actions when selecting an item in the history.}
+replay action=true
+
+#I[1;12] Duration of the action menu:
+#{in seconds.}
+action duration=4
+
+
+#F[Persistent items;drive-harddisk]
+frame_per=
+
+#U A list of persistent items which can be accessed with middle-click:/
+persistent=

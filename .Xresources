@@ -1,0 +1,49 @@
+! Black + DarkGrey
+*color0:  #000000
+*color8:  #555753
+! DarkRed + Red
+*color1:  #ff6565
+*color9:  #ff8d8d
+! DarkGreen + Green
+*color2:  #93d44f
+*color10: #c8e7a8
+! DarkYellow + Yellow
+*color3:  #eab93d
+*color11: #ffc123
+! DarkBlue + Blue
+*color4:  #204a87
+*color12: #3465a4
+! DarkMagenta + Magenta
+*color5:  #ce5c00
+*color13: #f57900
+!DarkCyan + Cyan (both not tango)
+*color6:  #89b6e2
+*color14: #46a4ff
+! LightGrey + White
+*color7:  #dddddd
+*color15: #ffffff
+URxvt*foreground: #93a1a1
+!URxvt*background: #141c21
+URxvt*background: #171f41
+URxvt*depth: 32
+
+URxvt*scrollWithBuffer: true
+URxvt*scrollTtyKeypress: true
+!URxvt.font: xft:DejaVu Sans Mono:size=10
+URxvt.font: xft:Iosevka Term:style=Light:antialias=true:hinting=true:size=12
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+URxvt.cursorBlink: true
+URxvt.scrollBar: false
+URxvt.scrollBar_right: false
+URxvt.internalBorder: 20
+
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 2
+URxvt.matcher.rend.0: Uline Bold fg5
+! URxvt.tabbed.tabbar-fg: 2
+! URxvt.tabbed.tabbar-bg: 0
+! URxvt.tabbed.tab-fg: 3
+! URxvt.tabbed.tab-bg: 0
+

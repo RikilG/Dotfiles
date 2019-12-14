@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# Stop this script if kde is running
+if pgrep kde > /dev/null
+then
+	killall conky
+	killall tilda
+	killall xpad
+	killall ulauncher
+	exit
+fi
+
+# cron job to check battery status and run tasks based on status
+# export this to set display variable and session bus address req for gui tasks
+eval "export $(egrep -z DBUS_SESSION_BUS_ADDRESS /proc/$(pgrep -u $LOGNAME gnome-session)/environ)";
+export DISPLAY=:0
+
+STATUS=`acpi -b | awk ' gsub(/(,|%)/,"",$0) {print $3}'` # Charging of Discharging
+PERCENT=`acpi -b | awk ' gsub(/(,|%)/,"",$0) {print $4}'` # number range: 0-100
+
+if [ $STATUS = "Discharging" ];
+then
+	if pgrep -x "conky" > /dev/null
+	then
+		killall conky
+	fi
+	if pgrep -x "tilda" > /dev/null
+	then
+		killall tilda
+	fi
+else
+	if ! pgrep -x "conky" > /dev/null
+	then
+		/bin/bash $HOME/.conky/conky-startup.sh
+	fi
+	if ! pgrep -x "tilda" > /dev/null
+	then
+		/usr/bin/tilda &
+	fi
+fi
+
+if [ $PERCENT -lt 7 ];
+then
+	/usr/bin/notify-send 'Battery at '+$PERCENT 'PLUG IN your charger NOW or save data and suspend' --icon=battery-caution
+elif [ $PERCENT -lt 20 ];
+then
+	/usr/bin/notify-send 'Battery at '+$PERCENT 'Plug in your charger' --icon=battery-caution
+elif [ $PERCENT -lt 25 ];
+then
+	/usr/bin/notify-send 'Battery at '+$PERCENT 'Consider going near a socket or reduce brightness' --icon=battery-low
+fi

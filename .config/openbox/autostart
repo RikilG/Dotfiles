@@ -1,0 +1,34 @@
+#
+# These things are run when an Openbox X Session is started.
+# You may place a similar script in $HOME/.config/openbox/autostart
+# to run user-specific things.
+#
+
+# If you want to use GNOME config tools...
+#
+#if test -x /usr/lib/openbox/gnome-settings-daemon >/dev/null; then
+#  /usr/lib/openbox/gnome-settings-daemon &
+#elif which gnome-settings-daemon >/dev/null 2>&1; then
+#  gnome-settings-daemon &
+#fi
+
+# If you want to use XFCE config tools...
+#
+#xfce-mcs-manager &
+
+/usr/local/bin/kb-light.py + 3
+#compton with blur 3x3 normal kernel
+#compton --respect-prop-shadow --config .config/compton/compton.conf --opengl --sw-opti --vsync opengl-swc --paint-on-overlay -cGb -r 11 -o .55 -l 1 -t 2 -fF -m .75 --blur-background --blur-background-frame --blur-background-fixed --blur-kern '3,3,1,1,1,1,1,1,1,1' &
+#compton with blur 5x5 gausian blur kernel (last number deleted: 0.003765)
+compton --respect-prop-shadow --config .config/compton/compton.conf --opengl --sw-opti --vsync opengl-swc --paint-on-overlay -cGb -r 11 -o .55 -l 1 -t 2 -fF -m .75 --blur-background --blur-background-frame --blur-background-fixed --blur-kern '5,5,0.003765,0.015019,0.023792,0.015019,0.003765,0.015019,0.059912,0.094907,0.059912,0.015019,0.023792,0.094907,0.150342,0.094907,0.023792,0.015019,0.059912,0.094907,0.059912,0.015019,0.003765,0.015019,0.023792,0.015019' &
+$HOME/.config/my_scripts/fehbg.sh &
+#$HOME/.config/my_scripts/touchpad_speed.sh &
+$HOME/.config/my_scripts/terminal_wall.sh &
+$HOME/.config/polybar/launch.sh &
+cairo-dock -o &
+xcape -e 'Super_L=Control_L|Shift_L|Alt_L|Super_L|D' &
+xbindkeys &
+devilspie -a &
+/usr/local/bin/kb-light.py - 3 &
+#$HOME/.conky/conky-startup.sh &
+#glava -d & # has high cpu usage at startup - 5% -- uninstalled

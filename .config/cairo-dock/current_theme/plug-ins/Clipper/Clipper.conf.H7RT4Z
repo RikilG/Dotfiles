@@ -1,0 +1,168 @@
+#1.1.9
+
+#[/usr/share/cairo-dock/icons/icon-icons.svg]
+
+[Icon]
+
+#F[Icon]
+frame_maininfo=
+
+#d Name of the dock it belongs to:
+dock name=_MainDock_
+
+#s[Default] Name of the icon as it will appear in its caption in the dock:
+name=
+#v
+sep_display=
+
+#g+[Default] Image filename:
+icon=
+
+#j+[0;128] Desired icon size for this applet
+#{Set to 0 to use the default applet size}
+icon size=0;0;
+
+order=7.5
+
+#A
+handbook=Clipper
+
+
+#[/usr/share/cairo-dock/icons/icon-desklets.svg]
+
+[Desklet]
+
+#X[Position]
+frame_pos=
+
+#b Lock position?
+#{If locked, the desklet cannot be moved by simply dragging it with the left mouse button. It can still be moved with ALT + left-click.}
+locked=false
+
+#j[24;512] Desklet dimensions (width x height):
+#{Depending on your WindowManager, you may be able to resize this with ALT + middle-click or ALT + left-click.}
+size=96;96;
+
+#i[-2048;2048] Desklet position (x, y):
+#{Depending on your WindowManager, you may be able to move this with ALT + left-click.}
+x position=-655
+#i[-2048;2048] ...
+y position=-391
+
+#I[-180;180] Rotation:
+#{You can quickly rotate the desklet with the mouse, by dragging the little buttons on its left and top sides.}
+rotation=0
+
+#X[Visibility]
+frame_visi=
+
+#b Is detached from the dock
+initially detached=false
+#l[Normal;Keep above;Keep below;Keep on widget layer;Reserve space] Visibility:
+accessibility=0
+#b Should be visible on all desktops?
+sticky=true
+
+#F[Decorations;preferences-desktop-theme]
+frame_deco=
+
+#o+ Choose a decoration theme for this desklet:
+#{Choose 'Custom decorations' to define your own decorations below.}
+decorations=default
+
+#v
+sep_deco=
+
+#g+ Background image:
+#{Image to be displayed below drawings, e.g. a frame. Leave empty for no image.}
+bg desklet=
+#e+[0;1] Background transparency:
+bg alpha=1
+#i+[0;256] Left offset:
+#{in pixels. Use this to adjust the left position of drawings.}
+left offset=0
+#i+[0;256] Top offset:
+#{in pixels. Use this to adjust the top position of drawings.}
+top offset=0
+#i+[0;256] Right offset:
+#{in pixels. Use this to adjust the right position of drawings.}
+right offset=0
+#i+[0;256] Bottom offset:
+#{in pixels. Use this to adjust the bottom position of drawings.}
+bottom offset=0
+#g+ Foreground image:
+#{Image to be displayed above the drawings, e.g. a reflection. Leave empty for no image.}
+fg desklet=
+#e+[0;1] Foreground tansparency:
+fg alpha=1
+
+use size=
+no input=0
+depth rotation y=0
+depth rotation x=0
+
+width=92
+height=92
+
+num desktop=-1
+
+[Configuration]
+
+#F[Items;view-sort-descending]
+frame_item=
+
+#l[None;Clipboard;Selection;Both] Which items should be remembered?
+#{Clipboard items are those you get with CTRL+c. Selection items are those you get by selecting some text with the mouse.}
+item type=1
+
+#I[1;50] Number of items:
+nb items=25
+
+#b Remember items between 2 sessions ?
+remember=true
+
+last items=\n\nplt.subplot(2, 1, 2)\nplt.plot(Y[fileNumber-1])\nplt.ylabel('probability')\nplt.show()=-+-=https://github.com/MycroftAI/mycroft-precise.git=-+-=go tour travels=-+-=SUPERDEAL=-+-=redBus_Ticket__TN7Y84673232_=-+-=TN7Y84673232=-+-=/home/rikil/Downloads/precise-engine.tar.gz\n=-+-=/home/rikil/Downloads/voiceqube.net\n=-+-=/mnt/STASH/@RIKIL/_Projects/@programming/ML/TriggerWordDetection/mycroft-precise/voiceqube.net\n=-+-=/mnt/STASH/@RIKIL/_Projects/@programming/ML/TriggerWordDetection/mycroft-precise/drive-download-20190704T052559Z-001/voiceqube.pbtxt\n/mnt/STASH/@RIKIL/_Projects/@programming/ML/TriggerWordDetection/mycroft-precise/drive-download-20190704T052559Z-001/voiceqube.pb.params\n/mnt/STASH/@RIKIL/_Projects/@programming/ML/TriggerWordDetection/mycroft-precise/drive-download-20190704T052559Z-001/voiceqube.pb\n=-+-=/mnt/STASH/@RIKIL/_Projects/@programming/ML/TriggerWordDetection/mycroft-precise/voiceqube.pbtxt\n/mnt/STASH/@RIKIL/_Projects/@programming/ML/TriggerWordDetection/mycroft-precise/voiceqube.pb.params\n/mnt/STASH/@RIKIL/_Projects/@programming/ML/TriggerWordDetection/mycroft-precise/voiceqube.pb\n=-+-=/mnt/STASH/Downloads/UgetDownloads/156G4R2XS49QJID96HPKG.mp4\n=-+-=One Piece 891=-+-=/mnt/STASH/Downloads/UgetDownloads/438G4RENCUX3AVJXSUWGE.mp4\n=-+-=Boruto- Naruto Next Generations - Episode 113=-+-=Voiceqube is a leading voice technology startup that helps businesses add voice to their\napplications. There will be a huge demand for voice based applications in coming future.\nThe aim of Voiceqube is to serve this demand by providing various voice skills and\nsoftware.\nThey help companies build custom NLP applications, Alexa skills, Google actions or create a\nvoice interface to their existing web or mobile applications. They have chosen voice\ninterface over GUI as it is the most natural and efficient way of communication known to\nmankind.=-+-=Objective\n=-+-=Objective : \nThe main objective of this project is to analyse a stream of audio and trigger an API when a particular word(Wake word) is heard.\n=-+-=API		- Application Programming Interface=-+-=GUI		- Graphical User Interface=-+-=VUI		- Voice User Interface=-+-=Major services of Voiceqube includes providing custom alexa skills, google home actions, Bixby applications or building Voice interfaces to companies who want to extend their existing applications to include voice support over their existing websites or mobile applications.\nSome of Voiceqube customers include: \nSweetInn: A hospitality company which has over 500 apartments across 10 cities in Europe. They provide a home atmosphere with the services of a luxury hotel. Voiceqube created a skill to navigate movie library and channels on their kodi home theatre system. \nIoTronix: Indian startup which manufactures IoT devices like smart switches, hubs, IR blasters, etc. Voiceqube developed a skill to successfully communicate with the IoT devices and toggle their state.\nVoiceqube is present in 6 locations across the globe such as the US, Europe, Australia and India. The current number of people working in this startup is around 10 people who are experienced people from various fields.\n=-+-=Major services of Voiceqube includes providing custom\nalexa skills, google home actions, Bixby applications or\nbuilding Voice interfaces to companies who want to\nextend their existing applications to include voice support\nover their existing websites or mobile applications.\nSome of Voiceqube customers include:\n● SweetInn: A hospitality company which has over\n500 apartments across 10 cities in Europe. They provide a home atmosphere with\nthe services of a luxury hotel. Voiceqube created a skill to navigate movie library\nand channels on their kodi home theatre system.\n● IoTronix: Indian startup which manufactures IoT devices like smart switches, hubs,\nIR blasters, etc. Voiceqube developed a skill to successfully communicate with the\nIoT devices and toggle their state.\n\nVoiceqube is present in 6 locations across the globe such as the US, Europe, Australia and\nIndia. The current number of people working in this startup is around 10 people who are\nexperienced people from various fields.=-+-=Project Report\nRikil Gajarla (2017A7PS0202H)\nAditya<bits id & name here>\n=-+-=4/gAFoX7Gw360cYldvRAQbGjKA5_b-An9U-OFzIKPtmUczuiCeshjI5OI
+
+#B Separate clipboard and selection?
+#{It is especially useful if you often select text with the mouse and don't want to loose your clipboard items due to too many items in the selection.}
+separate=false
+
+#I[1;50] If so, number of selection items:
+nb items2=10
+
+#b Paste into Clipboard?
+#{When you click on an item, its content will become accessible with CTRL+v}
+paste clipboard=true
+
+#b Paste into Selection?
+#{When you click on an item, its content will become accessible with the middle-click}
+paste selection=false
+
+#k Shortkey to pop-up the items menu:
+shortkey=<Control>F8
+
+#b Pop-up menus at mouse position?
+menu on mouse=true
+
+
+#F[Actions;system-run]
+frame_act=
+
+#B[2] Enable actions?
+#{If some actions are associated with an item, they will be proposed when the item is created.}
+enable actions=false
+
+#b Replay actions?
+#{Display actions when selecting an item in the history.}
+replay action=true
+
+#I[1;12] Duration of the action menu:
+#{in seconds.}
+action duration=4
+
+
+#F[Persistent items;drive-harddisk]
+frame_per=
+
+#U A list of persistent items which can be accessed with middle-click:/
+persistent=

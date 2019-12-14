@@ -1,0 +1,27 @@
+[PlasmaRunnerManager]
+LaunchCounts=1 services_htop.desktop,3 services_systemsettings.desktop,1 services_deadbeef.desktop
+pluginWhiteList=services,desktopsessions,PowerDevil,calculator,unitconverter,shell,bookmarks,baloosearch,locations
+
+[PlasmaThemeExtended]
+outlineWidth=1
+
+[ScreenConnectors]
+10=eDP1
+11=HDMI1
+
+[UniversalSettings]
+badges3DStyle=false
+canDisableBorders=false
+currentLayout=My Layout
+downloadWindowSize=800,550
+lastNonAssignedLayout=My Layout
+launchers=
+layoutsColumnWidths=86,76,63,0
+layoutsWindowSize=700,523
+memoryUsage=0
+metaPressAndHoldEnabled=true
+mouseSensitivity=2
+screenTrackerInterval=2500
+showInfoWindow=true
+unifiedGlobalShortcuts=true
+version=2
