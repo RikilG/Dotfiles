@@ -22,32 +22,34 @@ ViewPropsTimestamp=2019,6,7,21,17,40
 
 [IconsMode]
 FontWeight=50
-PreviewSize=80
+PreviewSize=96
 
 [KPropertiesDialog]
-Height 1080=597
-Width 1920=470
+Height 1080=490
+Width 1920=528
 
 [MainWindow]
-Height 1080=679
+Height 1080=759
 Height 900=687
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAwAAAAAAAAC0AAAC0fwCAAAAAvsAAAAWAGYAbwBsAGQAZQByAHMARABvAGMAawAAAAAA/////wAAAAoBAAAD+wAAABQAcABsAGEAYwBlAHMARABvAGMAawEAAAAmAAAC0QAAAFoBAAADAAAAAQAAAAAAAAAA/AIAAAAB+wAAABAAaQBuAGYAbwBEAG8AYwBrAAAAAAD/////AAAACgEAAAMAAAADAAAHgAAAASL8AQAAAAH7AAAAGAB0AGUAcgBtAGkAbgBhAGwARABvAGMAawEAAAAAAAAHgAAAAJEBAAADAAAGywAAAtEAAAAEAAAABAAAAAgAAAAI/AAAAAEAAAACAAAAAQAAABYAbQBhAGkAbgBUAG8AbwBsAEIAYQByAQAAAAD/////AAAAAAAAAAA=
+State=AAAA/wAAAAD9AAAAAwAAAAAAAADGAAACwvwCAAAAAvsAAAAWAGYAbwBsAGQAZQByAHMARABvAGMAawAAAAAA/////wAAAAIA////+wAAABQAcABsAGEAYwBlAHMARABvAGMAawEAAAA1AAACwgAAAFQA////AAAAAQAAALQAAAKI/AIAAAAB+wAAABAAaQBuAGYAbwBEAG8AYwBrAAAAADUAAAKIAAAAAgD///8AAAADAAAEyQAAAVf8AQAAAAH7AAAAGAB0AGUAcgBtAGkAbgBhAGwARABvAGMAawAAAAAAAAAEyQAAAAIA////AAAD/wAAAsIAAAAEAAAABAAAAAgAAAAI/AAAAAEAAAACAAAAAQAAABYAbQBhAGkAbgBUAG8AbwBsAEIAYQByAQAAAAD/////AAAAAAAAAAA=
 ToolBarsMovable=Disabled
 Width 1440=1115
-Width 1920=1216
-Window-Maximized 1080x1920=true
+Width 1920=1225
 
 [Open-with settings]
 CompletionMode=1
-History=
+History=subl,fire,noma,nom,f,firef,code,vlc,dead,sub,feh
 
 [PreviewSettings]
 Plugins=appimagethumbnail,audiothumbnail,blenderthumbnail,comicbookthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,gsthumbnail,rawthumbnail,svgthumbnail,ffmpegthumbs
 
+[Search]
+Location=Everywhere
+
 [SettingsDialog]
-Height 1080=476
-Width 1920=574
+Height 1080=537
+Width 1920=581
 
 [ViewPropertiesDialog]
 Height 1080=568

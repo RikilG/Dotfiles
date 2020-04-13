@@ -1,28 +1,22 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export TERM="xterm-256color"
-
-# powerlevel9k theme prompt setup
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-#POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(battery dir ip ssh newline dir_writable vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history )
-
-POWERLEVEL9K_BATTERY_STAGES=($'\uf579' $'\uf57a' $'\uf57b' $'\uf57c' $'\uf57d' $'\uf57e' $'\uf57f' $'\uf580' $'\uf581' $'\uf578')
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/rikil/.oh-my-zsh"
-# Path to anaconda installation
-# export PATH="/home/rikil/anaconda3/bin:$PATH"  # commented out by conda initialize
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
-#ZSH_THEME="agnoster"
-#ZSH_THEME="robbyrussell"
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -44,13 +38,14 @@ source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
 DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=5
+export UPDATE_ZSH_DAYS=7
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true" 
+# DISABLE_LS_COLORS="true"
+
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
@@ -82,9 +77,10 @@ HIST_STAMPS="dd/mm/yyyy"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-	git
-	colored-man-pages
-	tmux
+    git
+    colored-man-pages
+    tmux
+    zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -118,26 +114,32 @@ setopt autopushd
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim=nvim
-alias ':q'='exit'
 alias wifi='nmcli device wifi'
 alias cls=clear
+
 autoload -U compinit
 compinit
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+alias dotfiles='/usr/bin/git --git-dir=/home/rikil/.dotfiles/ --work-tree=/home/rikil'
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export PATH=$PATH:/home/rikil/.config/my_scripts/
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/rikil/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/rikil/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/rikil/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/rikil/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/rikil/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/rikil/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/rikil/anaconda3/bin:$PATH"
+        export PATH="/home/rikil/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-alias dotfiles='/usr/bin/git --git-dir=/home/rikil/.dotfiles/ --work-tree=/home/rikil'
+conda activate main

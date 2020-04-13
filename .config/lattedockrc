@@ -1,5 +1,5 @@
 [PlasmaRunnerManager]
-LaunchCounts=1 services_htop.desktop,3 services_systemsettings.desktop,1 services_deadbeef.desktop
+LaunchCounts=3 services_systemsettings.desktop,1 services_sublime_text.desktop,1 services_htop.desktop,2 services_linuxdcpp.desktop,1 services_vlc.desktop,1 services_deadbeef.desktop,1 services_uget-gtk.desktop
 pluginWhiteList=services,desktopsessions,PowerDevil,calculator,unitconverter,shell,bookmarks,baloosearch,locations
 
 [PlasmaThemeExtended]
@@ -17,7 +17,7 @@ downloadWindowSize=800,550
 lastNonAssignedLayout=My Layout
 launchers=
 layoutsColumnWidths=86,76,63,0
-layoutsWindowSize=700,523
+layoutsWindowSize=700,563
 memoryUsage=0
 metaPressAndHoldEnabled=true
 mouseSensitivity=2

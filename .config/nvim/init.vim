@@ -15,6 +15,10 @@ filetype plugin indent on
 set nu
 set rnu
 set ignorecase
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set expandtab
 if has('mouse')
 	set mouse=a
 endif

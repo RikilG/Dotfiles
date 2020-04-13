@@ -66,7 +66,7 @@ positions=1,17,desktop:/Hello World,0,0,desktop:/Windows-10.desktop,0,1,desktop:
 sortMode=-1
 
 [DownloadDialog Settings]
-Height 1080=494
+Height 1080=525
 Width 1920=700
 
 [KFileDialog Settings]
@@ -79,7 +79,7 @@ Height 1080=448
 Width 1920=410
 
 [PlasmaRunnerManager]
-LaunchCounts=1 services_virtualbox.desktop,1 services_blueman-manager.desktop,1 services_htop.desktop,1 services_deadbeef.desktop,8 services_systemsettings.desktop
+LaunchCounts=8 services_systemsettings.desktop,1 services_deadbeef.desktop,1 services_blueman-manager.desktop,1 services_virtualbox.desktop,1 services_htop.desktop
 pluginWhiteList=services,shell,bookmarks,baloosearch,locations
 
 [PlasmaViews][Panel 17][Horizontal1920]
@@ -105,4 +105,4 @@ thickness=36
 1=HDMI1
 
 [Updates]
-performed=/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/obsolete_kickoffrc.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/move_desktop_layout_config.js
+performed=/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/obsolete_kickoffrc.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/move_desktop_layout_config.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/unlock_widgets.js

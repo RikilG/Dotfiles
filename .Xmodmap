@@ -1,2 +1,31 @@
-clear lock
-keycode 66 = Escape Caps_Lock NoSymbol NoSymbol
+clear   lock
+! keycode 66 = Hyper_L Caps_Lock NoSymbol NoSymbol
+keycode 66 = Mode_switch Caps_Lock NoSymbol NoSymbol
+! remove  mod4 = Hyper_L
+! add     mod3 = Hyper_L
+! remove  mod4 = Mode_switch
+! add     mod3 = Mode_switch
+keysym  h = h H Left
+keysym  l = l L Right
+keysym  k = k K Up
+keysym  j = j J Down
+keysym  KP_1 = KP_1 KP_End KP_End
+keysym  KP_7 = KP_7 KP_Home KP_Home
+keysym  KP_9 = KP_9 KP_Prior KP_Prior
+keysym  KP_3 = KP_3 KP_Next KP_Next
+keysym  KP_2 = KP_2 KP_Down KP_Down
+keysym  KP_8 = KP_8 KP_Up KP_Up
+keysym  KP_4 = KP_4 KP_Left KP_Left
+keysym  KP_6 = KP_6 KP_Right KP_Right
+
+! Not Required to remap everything
+! clear   mod1
+! clear   mod2
+! clear   mod3
+! clear   mod4
+! clear   mod5
+! add     mod1 = Alt_L Alt_R Meta_L
+! add     mod2 = Num_Lock
+! add     mod3 = Hyper_L
+! add     mod4 = Super_L Super_R
+! add     mod5 = ISO_Level3_Shift Mode_switch
