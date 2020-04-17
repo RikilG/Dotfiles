@@ -122,6 +122,11 @@ compinit
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 alias dotfiles='/usr/bin/git --git-dir=/home/rikil/.dotfiles/ --work-tree=/home/rikil'
+alias STASH='cd /mnt/STASH/'
+alias DC='cd /mnt/DC/DC++/'
+alias PROJ='cd /mnt/STASH/@RIKIL/_Projects/'
+alias NOTES='cd /mnt/STASH/@RIKIL/Notes/'
+alias RIKIL='cd /mnt/STASH/@RIKIL/'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

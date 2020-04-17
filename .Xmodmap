@@ -17,6 +17,7 @@ keysym  KP_2 = KP_2 KP_Down KP_Down
 keysym  KP_8 = KP_8 KP_Up KP_Up
 keysym  KP_4 = KP_4 KP_Left KP_Left
 keysym  KP_6 = KP_6 KP_Right KP_Right
+keysym  KP_5 = KP_5 KP_Begin KP_Begin
 
 ! Not Required to remap everything
 ! clear   mod1

@@ -1,0 +1,112 @@
+#!/bin/bash
+
+TEMPLATE_PATH="/home/rikil/.config/my_scripts/new_templates"
+INFO_FILE="$TEMPLATE_PATH/USER_INFO"
+
+yes_no () {
+    local temp
+    read temp
+    if [[ $temp == "y" || $temp == "Y" || $temp == "YES" || $temp == "yes" ]]; then
+        echo "y"
+    elif [[ -z $temp ]]; then
+        echo $1
+    else
+        echo "n"
+    fi
+}
+
+new_dir () {
+    if [[ -z $1 ]]; then
+        echo "No directory name or path given"
+        return 1
+    fi
+    mkdir -p $1
+    echo "$1 successfully created!"
+}
+
+gitignore () {
+    local stack
+    for item in "$@"; do
+        if [[ $item == "vscode" ]]; then
+            stack+="visualstudiocode%20"
+        else
+            stack+="$item%20"
+        fi
+    done
+    curl -sL "https://www.gitignore.io/api/$stack" >> .gitignore
+}
+
+new_git () {
+    YEAR=$(date +%Y)
+    if [[ -f $INFO_FILE ]]; then
+        source $INFO_FILE
+    else
+        echo "#!/bin/bash" >> $INFO_FILE
+        USER_NAME=
+        echo -n "Enter your name (for licensing): "
+        read USER_NAME
+        echo "USER_NAME=$USER_NAME" >> $INFO_FILE
+    fi
+    local name
+    while [[ -z $name ]]; do
+        echo -n "Enter name of your project: "
+        read name
+    done
+    #echo -n "Do you want a .gitignore ([Y]/n): "
+    #local gi=$(yes_no y)
+    echo -n "Do you want a README.md ([Y]/n): "
+    local readme=$(yes_no y)
+    echo -n "Do you want a MIT License ([Y]/n): "
+    local license=$(yes_no y)
+
+    mkdir -p $name
+    cd $name
+    git init
+    #gitignore vscode windows linux c c++ python java jupyternotebooks
+    if [[ $readme == "y" ]]; then
+        echo "# $name" >> README.md
+    fi
+    if [[ $license == "y" ]]; then
+        echo "MIT License" >> LICENSE
+        echo "" >> LICENSE
+        echo "Copyright (c) $YEAR $USER_NAME" >> LICENSE
+        echo "" >> LICENSE
+        cat $TEMPLATE_PATH/MIT_LICENSE >> LICENSE
+    fi
+    cd ..
+}
+
+open_template () {
+    if [[ -z $2 ]]; then
+        echo "No file name provided"
+        return 1
+    elif [[ -f $2 ]]; then
+        exec nvim $2
+        return 0
+    fi
+    
+    if [[ $1 == "c" || $1 == "C" ]]; then
+        cat $TEMPLATE_PATH/c_template.c >> $2
+    elif [[ $1 == "cc" || $1 == "CC" ]]; then
+        cat $TEMPLATE_PATH/cc_template.cpp >> $2
+    elif [[ $1 == "c++" || $1 == "cpp" || $1 == "CPP" || $1 == "C++" ]]; then
+        cat $TEMPLATE_PATH/cpp_template.cpp >> $2
+    elif [[ $1 == "py" || $1 == "python" || $1 == "PY" ]]; then
+        cat $TEMPLATE_PATH/python_template.py >> $2
+    else
+        echo "Unknown option"
+        return 1
+    fi
+    exec nvim $2
+}
+
+if [[ $1 == "folder" || $1 == "dir" || $1 == "directory" ]]; then
+    new_dir $2
+elif [[ $1 == "gi" || $1 == "gitignore" ]]; then
+    shift
+    gitignore $@
+elif [[ $1 == "git" || $1 == "project" || $1 == "proj" ]]; then
+    new_git
+else
+    open_template $@
+fi

@@ -1,8 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =6
-let g:netrw_dirhist_6='/home/rikil/test'
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/home/rikil'
+let g:netrw_dirhist_7='/home/rikil/.config/nvim'
+let g:netrw_dirhist_6='/home/rikil/.config'
 let g:netrw_dirhist_5='/home/rikil'
-let g:netrw_dirhist_4='/home/rikil/.config/cmus/playlists'
-let g:netrw_dirhist_3='/home/rikil/.config/cmus'
+let g:netrw_dirhist_4='/home/rikil/.dotfiles'
+let g:netrw_dirhist_3='/home/rikil'
 let g:netrw_dirhist_2='/home/rikil/.config'
 let g:netrw_dirhist_1='/home/rikil'
+let g:netrw_dirhist_0='/home/rikil/.config/my_scripts/new_templates'
+let g:netrw_dirhist_9='/mnt/STASH/@RIKIL/Notes/Productivity'
