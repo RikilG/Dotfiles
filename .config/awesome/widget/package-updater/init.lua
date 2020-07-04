@@ -1,11 +1,6 @@
 -------------------------------------------------
--- Battery Widget for Awesome Window Manager
--- Shows the battery status using the ACPI tool
--- More details could be found here:
--- https://github.com/streetturtle/awesome-wm-widgets/tree/master/battery-widget
-
--- @author Pavel Makhov
--- @copyright 2017 Pavel Makhov
+-- Package Updater Widget for Awesome Window Manager
+-- Shows the package updates information in Arch Linux
 -------------------------------------------------
 
 local awful = require('awful')
@@ -15,10 +10,6 @@ local wibox = require('wibox')
 local clickable_container = require('widget.material.clickable-container')
 local gears = require('gears')
 local dpi = require('beautiful').xresources.apply_dpi
-
--- acpi sample outputs
--- Battery 0: Discharging, 75%, 01:51:38 remaining
--- Battery 0: Charging, 53%, 00:57:43 until charged
 
 local HOME = os.getenv('HOME')
 local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/package-updater/icons/'
@@ -30,12 +21,13 @@ local widget =
   {
     id = 'icon',
     widget = wibox.widget.imagebox,
+    image = PATH_TO_ICONS .. 'package' .. '.svg',
     resize = true
   },
   layout = wibox.layout.align.horizontal
 }
 
-local widget_button = clickable_container(wibox.container.margin(widget, dpi(14), dpi(14), dpi(7), dpi(7))) -- 4 is top and bottom margin
+local widget_button = clickable_container(wibox.container.margin(widget, dpi(7), dpi(7), dpi(7), dpi(7)))
 widget_button:buttons(
   gears.table.join(
     awful.button(
@@ -52,6 +44,8 @@ widget_button:buttons(
     )
   )
 )
+widget_button.visible = false
+
 -- Alternative to naughty.notify - tooltip. You can compare both and choose the preferred one
 awful.tooltip(
   {
@@ -99,9 +93,11 @@ watch(
     if (numOfUpdatesAvailable ~= nil) then
       updateAvailable = true
       widgetIconName = 'package-up'
+      widget_button.visible = true
     else
       updateAvailable = false
       widgetIconName = 'package'
+      widget_button.visible = true
     end
     widget.icon:set_image(PATH_TO_ICONS .. widgetIconName .. '.svg')
     collectgarbage('collect')

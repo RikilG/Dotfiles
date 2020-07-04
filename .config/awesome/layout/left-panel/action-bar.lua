@@ -23,7 +23,7 @@ return function(screen, panel, action_bar_width)
       menu_icon,
       widget = clickable_container
     },
-    bg = beautiful.background.hue_800 .. '99', -- beautiful.primary.hue_500,
+    bg = beautiful.background.hue_800 .. '66', -- beautiful.primary.hue_500,
     widget = wibox.container.background
   }
 
@@ -94,30 +94,33 @@ end
     end
   )
 
+  local separator =  wibox.widget
+    {
+      orientation = 'horizontal',
+      forced_height = dpi(1),
+      opacity = 0.20,
+      widget = wibox.widget.separator
+    }
+
   return wibox.widget {
     id = 'action_bar',
     layout = wibox.layout.align.vertical,
     forced_width = action_bar_width,
     {
       -- Left widgets
-      layout = wibox.layout.fixed.vertical,
       home_button,
       -- Create a taglist widget
       TagList(screen),
-      --[[wibox.widget {
-              orientation = 'horizontal',
-              forced_height = 10,
-              opacity = 0.50,
-              widget = wibox.widget.separator
-            }, ]]--
+      require("widget.xdg-folders"),
+      layout = wibox.layout.fixed.vertical,
+
     },
-    --s.mytasklist, -- Middle widget
+     -- Middle widget
     nil,
     {
       -- Right widgets
+      LayoutBox(s),
       layout = wibox.layout.fixed.vertical,
-      LayoutBox(s)
-
     }
   }
 end

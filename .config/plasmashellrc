@@ -66,21 +66,41 @@ positions=1,17,desktop:/Hello World,0,0,desktop:/Windows-10.desktop,0,1,desktop:
 sortMode=-1
 
 [DownloadDialog Settings]
-Height 1080=525
+Height 1080=488
 Width 1920=700
 
 [KFileDialog Settings]
-Recent Files[$e]=Abstract-Dark-blue-color-polygon-art.jpg,file:$HOME/Pictures/arch2.png,file:$HOME/Pictures/arch.png,file:$HOME/Downloads/windows-lasers.jpg,file:$HOME/Downloads/Windows-10.png,file:$HOME/Downloads/mikael-gustafsson-amongtrees-2-8.jpg,file:$HOME/Downloads/wallpaper.jpg,file:$HOME/Downloads/sunset.jpg,file:$HOME/Downloads/sky.jpg,file:$HOME/Downloads/creek.png,file:$HOME/Downloads/city3.jpg,file:$HOME/Downloads/city.jpg,file:$HOME/Downloads/circuit.jpg,file:$HOME/Downloads/background.png,file:$HOME/Downloads/arch-digitized.jpg,file:$HOME/Downloads/Abstract-Dark-blue-color-polygon-art.jpg
+Recent Files[$e]=Abstract-Dark-blue-color-polygon-art.jpg,file:$HOME/Pictures/menuarch.svg,file:$HOME/Downloads/Walls/Windows-10.png,file:$HOME/Downloads/collected-wallpapers/scenery/aoraki_glacier_stream.jpg,file:$HOME/Downloads/collected-wallpapers/scenery/ocean-boat-1920×1080.jpg,file:$HOME/Pictures/arch2.png,file:$HOME/Pictures/arch.png
 Recent URLs[$e]=file:$HOME/Pictures/
-detailViewIconSize=0
+detailViewIconSize=20
 
 [KPropertiesDialog]
 Height 1080=448
 Width 1920=410
 
 [PlasmaRunnerManager]
-LaunchCounts=8 services_systemsettings.desktop,1 services_deadbeef.desktop,1 services_blueman-manager.desktop,1 services_virtualbox.desktop,1 services_htop.desktop
+LaunchCounts=1 services_blueman-manager.desktop,1 services_deadbeef.desktop,1 services_uget-gtk.desktop,1 services_htop.desktop,1 services_virtualbox.desktop,2 services_tuxcut.desktop,11 services_systemsettings.desktop,1 services_code-oss.desktop
 pluginWhiteList=services,shell,bookmarks,baloosearch,locations
+
+[PlasmaViews][Panel 107][Defaults]
+thickness=27
+
+[PlasmaViews][Panel 107][Horizontal1920]
+thickness=27
+
+[PlasmaViews][Panel 110]
+alignment=132
+panelVisibility=0
+
+[PlasmaViews][Panel 110][Defaults]
+maxLength=1920
+minLength=1920
+thickness=28
+
+[PlasmaViews][Panel 110][Horizontal1920]
+maxLength=1920
+minLength=1920
+thickness=28
 
 [PlasmaViews][Panel 17][Horizontal1920]
 thickness=36
@@ -103,6 +123,7 @@ thickness=36
 [ScreenConnectors]
 0=eDP1
 1=HDMI1
+2=VIRTUAL1
 
 [Updates]
 performed=/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/obsolete_kickoffrc.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/move_desktop_layout_config.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/unlock_widgets.js

@@ -6,6 +6,7 @@ local client_buttons = require('configuration.client.buttons')
 -- Rules
 awful.rules.rules = {
   -- All clients will match this rule.
+  -- Add `skip_decoration = true` to other rule_any to exclude that
   {
     rule = {},
     except_any = {
@@ -15,6 +16,7 @@ awful.rules.rules = {
       }
     },
     properties = {
+      round_corners = true,
       focus = awful.client.focus.filter,
       raise = true,
       keys = client_keys,
@@ -28,52 +30,79 @@ awful.rules.rules = {
       ontop = false,
       sticky = false,
       maximized_horizontal = false,
-      maximized_vertical = false
-
+      maximized_vertical = false  
     }
   },
-  { rule_any = { name = {'QuakeTerminal'} },
-    properties = { skip_decoration = true, titlebars_enabled = false }
+
+
+    -- Dialogs and modals
+  {
+    rule_any = {
+      type = { 'dialog', 'modal' },
+      class = {
+        'Wicd-client.py',
+        'calendar.google.com'
+      }
+    },
+    properties = {
+      ontop = true,
+      floating = true,
+      drawBackdrop = true,
+      skip_decoration = true,
+      placement = awful.placement.centered
+    }
   },
+
 
   -- Terminals
   {
     rule_any = {
-       class = {
-			"URxvt",
-			"XTerm",
-			"UXTerm",
-      "kitty"
+      class = {
+        "URxvt",
+        "XTerm",
+        "UXTerm",
+        "kitty",
+        "K3rmit"
        },
     },
-        properties = {
-          screen = 1, tag = '1',
-          switchtotag = true,
-          titlebars_enabled = true
+    except_any = {
+      instance = {
+        -- Dont't switch to tag `1` when opening QuakeTerminal
+        'QuakeTerminal',
       }
+    },
+    properties = {
+      size_hints_honor = false,
+      screen = 1, 
+      tag = '1',
+      switchtotag = true,
+    }
   },
 
   -- Browsers
   {
     rule_any = {
-		class = {
-      "firefox",
-      "Brave"
-       },
+      class = {
+        "firefox",
+        "Tor Browser",
+        "Brave"
+      },
     },
-        properties = { screen = 1, tag = '2' }
+    properties = { screen = 1, tag = '2' }
   },
+
 
   -- Editors
   {
-	rule_any = {
-		class = {
-			"Geany",
-      "Atom",
-      "code-oss"
-		},
-	},
-		properties = { screen = 1, tag = '3' }
+    rule_any = {
+      class = {
+        "Geany",
+        "Atom",
+        "Subl3",
+        "code-oss"
+      },
+    },
+    properties = { screen = 1, tag = '3' }
   },
 
   -- File Managers
@@ -81,105 +110,107 @@ awful.rules.rules = {
     rule_any = {
        class = {
          "Nemo",
-         "File-roller",
-         "Dolphin"
+         "File-roller"
        },
     },
-        properties = { tag = '4' }
+    properties = { tag = '4', switchtotag = true }
   },
+
     -- Multimedia
   {
     rule_any = {
       class = {
         "vlc",
         "Deadbeef",
-        "cmus"
+        "cmus",
+        "ncmpcpp"
        },
     },
-        properties = { tag = '5' }
+    properties = { tag = '5', switchtotag = true }
   },
-	-- Games
 
+  -- Games
   {
-	rule_any = {
-
-		class = {
-			"Wine",
-      "dolphin-emu"
-		},
-  --s  instance = { 'SuperTuxKart' }
-	},
-		properties = {
+  rule_any = {
+    class = {
+      "Wine",
+      "dolphin-emu",
+      "Steam",
+      "Citra"
+    },
+  },
+    properties = {
       screen = 1,
       tag = '6',
       switchtotag = true,
       floating = true,
-      titlebars_enabled = true
+      hide_titlebars = true
     }
   },
 
-  -- Multimedia Editing
-  {
-	rule_any = {
-		class = {
-			"Gimp-2.10",
-			"Inkscape"
-		},
-	},
-		properties = { screen = 1, tag = '7'}
-  },
-
-
-  -- Custom
+  -- Graphics Editing
   {
   rule_any = {
     class = {
-      "feh"
+      "Gimp-2.10",
+      "Inkscape",
+      "Flowblade"
+    },
+  },
+    properties = { screen = 1, tag = '7'}
+  },
+
+  -- Virtualbox
+  {
+  rule_any = {
+    class = {
+      "VirtualBox Manage",
+      "VirtualBox Machine"
+    },
+  },
+    properties = { screen = 1, tag = '8'}
+  },
+
+
+  -- Workspace Editing and IDEs
+  {
+  rule_any = {
+    class = {
+      "Oomox",
+      "Unity",
+      "UnityHub",
+      "jetbrains-studio"
+    },
+  },
+    properties = { 
+      screen = 1,
+      tag = '9', 
+      skip_decoration = true,
+      round_corners = true,
+    }
+  },
+
+  -- Some floating apps
+  {
+  rule_any = {
+    class = {
+      "feh",
+      "Mugshot",
+      "Pulseeffects",
+      "ksysguard"
     },
   },
     properties = {
     skip_decoration = true,
-    titlebars_enabled = true,
+    hide_titlebars = true,
     floating = true,
-    placement = awful.placement.centered,
-    ontop = true
+    ontop = true,
+    placement = awful.placement.centered
     }
   },
 
 
-  {
-  rule_any = {
-    class = {
-      "xlunch-fullscreen"
-    },
-  },
-    properties = {
-    skip_decoration = true,
-    fullscreen = true,
-    ontop = true
-    }
-  },
-
-
-  -- Dialogs
-  {
-    rule_any = {type = {'dialog'}, class = {'Wicd-client.py', 'calendar.google.com'}},
-    properties = {
-      placement = awful.placement.centered,
-      ontop = true,
-      floating = true,
-      drawBackdrop = false, -- TRUE if you want to add blur backdrop
-      shape = function()
-        return function(cr, w, h)
-          gears.shape.rounded_rect(cr, w, h, 12)
-        end
-      end,
-      skip_decoration = true
-    }
-  },
-
-
-  -- Intstances
+  -- Instances
   -- Network Manager Editor
   {
     rule = {
@@ -187,6 +218,7 @@ awful.rules.rules = {
     },
     properties = {
       skip_decoration = true,
+      round_corners = true,
       ontop= true,
       floating = true,
       drawBackdrop = false,
@@ -196,13 +228,34 @@ awful.rules.rules = {
       buttons = client_buttons
     }
   },
--- For nemo progress bar when copying or moving
+  
+  -- For nemo progress bar when copying or moving
   {
     rule = {
       instance = 'file_progress'
     },
     properties = {
       skip_decoration = true,
+      round_corners = true,
+      ontop= true,
+      floating = true,
+      drawBackdrop = false,
+      focus = awful.client.focus.filter,
+      raise = true,
+      keys = client_keys,
+      buttons = client_buttons,
+      placement = awful.placement.centered
+    }
+  },
+
+  {
+    -- For Firefox Popup when you open incognito mode
+    rule = {
+      instance = 'Popup'
+    },
+    properties = {
+      skip_decoration = true,
+      round_corners = true,
       ontop= true,
       floating = true,
       drawBackdrop = false,
@@ -211,23 +264,6 @@ awful.rules.rules = {
       keys = client_keys,
       buttons = client_buttons
     }
-  }
-},
-
--- For Firefox Popup when you install extension
-{
-  rule = {
-    instance = 'Popup'
-  },
-  properties = {
-    skip_decoration = true,
-    ontop= true,
-    floating = true,
-    drawBackdrop = false,
-    focus = awful.client.focus.filter,
-    raise = true,
-    keys = client_keys,
-    buttons = client_buttons
   }
 }
 
@@ -246,7 +282,7 @@ client.connect_signal("property::class",function(c)
       end
     end
 
-      -- Move it to the desired tag in THIS SCREEN
+    -- Move it to the desired tag in THIS SCREEN
     local tagName = ''
     if c.class == 'Spotify' then
       tagName = '5'
@@ -258,12 +294,6 @@ client.connect_signal("property::class",function(c)
     t:view_only()
 
     if c.class == 'SuperTuxKart' then
-      -- Two fullscreen mode to remove bug
-      -- Yeah it's a hackish way, but it works so whatever
-      -- Make sure to enable fullscreen in SuperTuxKart Settings
-      -- Not tested on not Fullscreen mode in Settings
-      -- Make sure! Or maybe it can delete your root directory
-      c.fullscreen = not c.fullscreen
       c.fullscreen = not c.fullscreen
       c:raise()
     end

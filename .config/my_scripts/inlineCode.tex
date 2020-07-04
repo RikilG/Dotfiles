@@ -1,0 +1,6 @@
+\usepackage{fancyvrb,newverbs,xcolor}
+\definecolor{Light}{HTML}{E6E6E6}
+\let\oldtexttt\texttt
+\renewcommand{\texttt}[1]{
+    \colorbox{Light}{\oldtexttt{#1}}
+}

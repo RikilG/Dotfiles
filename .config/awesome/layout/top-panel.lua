@@ -11,16 +11,14 @@ local dpi = require('beautiful').xresources.apply_dpi
 
 local icons = require('theme.icons')
 
-  -- Clock / Calendar 12h format
-local textclock = wibox.widget.textclock('<span font="Roboto bold 12">%l:%M %p</span>')
+-- Clock / Calendar 12h format
+-- Get Time/Date format using `man strftime`
+local textclock = wibox.widget.textclock('<span font="SFNS Display Bold 10">%a, %d | %l:%M %p</span>', 1)
 
-  -- Clock / Calendar 12AM/PM fornat
-  -- local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 11">%I\n%M</span>\n<span font="Roboto Mono bold 9">%p</span>')
-  -- textclock.forced_height = 56
+-- Clock / Calendar 12AM/PM fornatan font="Roboto Mono bold 11">%I\n%M</span>\n<span font="Roboto Mono bold 9">%p</span>')
 local clock_widget = wibox.container.margin(textclock, dpi(0), dpi(0))
 
 -- Alternative to naughty.notify - tooltip. You can compare both and choose the preferred one
-
 awful.tooltip(
   {
     objects = {clock_widget},
@@ -37,44 +35,50 @@ awful.tooltip(
 
 
 local cal_shape = function(cr, width, height)
-    gears.shape.infobubble(cr, width, height, 12)
+  -- gears.shape.infobubble(cr, width, height, 12)
+  gears.shape.partially_rounded_rect(
+    cr, width, height, false, false, true, true, 12)
 end
 
 -- Calendar Widget
 local month_calendar = awful.widget.calendar_popup.month({
 	start_sunday = true,
 	spacing = 10,
-	font = 'Iosevka Custom 11',
+	font = 'SFNS Display 10',
 	long_weekdays = true,
-	margin = 5,
+	margin = 0, -- 10
 	style_month = { border_width = 0, padding = 12, shape = cal_shape, padding = 25},
 	style_header = { border_width = 0, bg_color = '#00000000'},
 	style_weekday = { border_width = 0, bg_color = '#00000000' },
 	style_normal = { border_width = 0, bg_color = '#00000000'},
 	style_focus = { border_width = 0, bg_color = beautiful.primary.hue_500 },
+})
+-- Attach calentar to clock_widget
+month_calendar:attach(clock_widget, "tc" , { on_pressed = true, on_hover = false })
 
-	})
-	month_calendar:attach( clock_widget, "tc" , { on_pressed = true, on_hover = false })
-
-
-awful.screen.connect_for_each_screen(function(s)
+-- Create to each screen
+screen.connect_signal("request::desktop_decoration", function(s)
   s.systray = wibox.widget.systray()
   s.systray.visible = false
   s.systray:set_horizontal(true)
   s.systray:set_base_size(28)
-  beautiful.systray_icon_spacing = 24
   s.systray.opacity = 0.3
+  beautiful.systray_icon_spacing = 16
 end)
 
---[[
--- Systray Widget
-local systray = wibox.widget.systray()
-	systray:set_horizontal(true)
-	systray:set_base_size(28)
-	beautiful.systray_icon_spacing = 24
-	opacity = 0
-]]--
 
+-- Execute only if system tray widget is not loaded
+awesome.connect_signal("toggle_tray", function()
+  if not require('widget.systemtray') then
+    if awful.screen.focused().systray.visible ~= true then
+      awful.screen.focused().systray.visible = true
+    else
+      awful.screen.focused().systray.visible = false
+    end
+  end
+end)
+
+-- The `+` sign in top panel
 local add_button = mat_icon_button(mat_icon(icons.plus, dpi(16))) -- add button -- 24
 add_button:buttons(
   gears.table.join(
@@ -99,14 +103,14 @@ add_button:buttons(
 local TopPanel = function(s, offset)
   local offsetx = 0
   if offset == true then
-    offsetx = dpi(45) -- 48
+    offsetx = dpi(45)
   end
   local panel =
     wibox(
     {
       ontop = true,
       screen = s,
-      height = dpi(30), -- 26 -- 48
+      height = dpi(26),
       width = s.geometry.width - offsetx,
       x = s.geometry.x + offsetx,
       y = s.geometry.y,
@@ -114,19 +118,19 @@ local TopPanel = function(s, offset)
       bg = beautiful.background.hue_800,
       fg = beautiful.fg_normal,
       struts = {
-        top = dpi(30) -- 26 -- 48
+        top = dpi(26)
       }
     }
   )
 
   panel:struts(
     {
-      top = dpi(30) -- 26 -- 48
+      top = dpi(26)
     }
   )
 
   panel:setup {
-	expand = "none",
+    expand = "none",
     layout = wibox.layout.align.horizontal,
     {
       layout = wibox.layout.fixed.horizontal,
@@ -134,19 +138,20 @@ local TopPanel = function(s, offset)
       TaskList(s),
       add_button
     },
-	  -- Create a clock widget
 	  -- Clock
+    -- Change to `nil` if you want to extend tasklist up to the right
 	  clock_widget,
     {
       layout = wibox.layout.fixed.horizontal,
-      -- System tray and widgets
-      --wibox.container.margin(systray, dpi(14), dpi(14)),
-      wibox.container.margin(s.systray, dpi(14), dpi(0), dpi(4), dpi(4)),
+      s.systray,
+      require('widget.systemtray'),
       require('widget.package-updater'),
+      require('widget.music'),
       require('widget.bluetooth'),
       require('widget.wifi'),
       require('widget.battery'),
       require('widget.search'),
+      require('widget.notification-center'),
     }
   }
 

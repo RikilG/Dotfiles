@@ -1,11 +1,6 @@
 -------------------------------------------------
--- Battery Widget for Awesome Window Manager
--- Shows the battery status using the ACPI tool
--- More details could be found here:
--- https://github.com/streetturtle/awesome-wm-widgets/tree/master/battery-widget
-
--- @author Pavel Makhov
--- @copyright 2017 Pavel Makhov
+-- WiFi Widget for Awesome Window Manager
+-- Shows the wifi status using the ACPI tool
 -------------------------------------------------
 
 local awful = require('awful')
@@ -15,9 +10,6 @@ local clickable_container = require('widget.material.clickable-container')
 local gears = require('gears')
 local dpi = require('beautiful').xresources.apply_dpi
 
--- acpi sample outputs
--- Battery 0: Discharging, 75%, 01:51:38 remaining
--- Battery 0: Charging, 53%, 00:57:43 until charged
 
 local HOME = os.getenv('HOME')
 local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/wifi/icons/'
@@ -29,13 +21,14 @@ local widget =
   wibox.widget {
   {
     id = 'icon',
+    image = PATH_TO_ICONS .. 'wifi-off' .. '.svg',
     widget = wibox.widget.imagebox,
     resize = true
   },
   layout = wibox.layout.align.horizontal
 }
 
-local widget_button = clickable_container(wibox.container.margin(widget, dpi(14), dpi(14), dpi(7), dpi(7))) -- top and bottom margin  = 4
+local widget_button = clickable_container(wibox.container.margin(widget, dpi(7), dpi(7), dpi(7), dpi(7)))
 widget_button:buttons(
   gears.table.join(
     awful.button(
@@ -49,7 +42,7 @@ widget_button:buttons(
   )
 )
 
-local widget_button = clickable_container(wibox.container.margin(widget, dpi(14), dpi(14), 7, 7)) -- default top bottom margin is 7
+local widget_button = clickable_container(wibox.container.margin(widget, dpi(7), dpi(7), dpi(7), dpi(7)))
 widget_button:buttons(
   gears.table.join(
     awful.button(
@@ -107,7 +100,7 @@ watch(
       -- Update popup text
       local wifi_strength_rounded = math.floor(wifi_strength / 25 + 0.5)
       widgetIconName = widgetIconName .. '-' .. wifi_strength_rounded
-      widget.icon:set_image(PATH_TO_ICONS .. widgetIconName .. '.svg')      
+      widget.icon:set_image(PATH_TO_ICONS .. widgetIconName .. '.svg')
     else
       connected = false
       widget.icon:set_image(PATH_TO_ICONS .. widgetIconName .. '-off' .. '.svg')

@@ -1,0 +1,21 @@
+[Desktop Entry]
+Categories=Utilities
+Comment[en_US]=Rebind Start and CapsLock
+Comment=Rebind Start and CapsLock
+Encoding=UTF-8
+Exec=/home/rikil/.config/my_scripts/rebindkeys.sh
+GenericName[en_US]=Software
+GenericName=Software
+Icon=input-keyboard
+MimeType=
+Name[en_US]=ReBindKeys
+Name=ReBindKeys
+Path=
+StartupNotify=true
+Terminal=true
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

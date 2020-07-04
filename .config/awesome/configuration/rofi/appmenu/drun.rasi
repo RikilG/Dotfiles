@@ -1,65 +1,77 @@
 configuration {
-    show-icons:                     true;
-    icon-theme:                     "Flat-Remix-Blue-Dark";
-    font:                           "SFNS Display 14";
+  show-icons:                     true;
+  icon-theme:                     "Flat-Remix-Blue-Dark";
+  font:                           "Neue Haas Unica Pro Bold 10";
+  drun-display-format:            "{name}";
 }
-
 
 * {
-    background-color:               transparent;
-    background:                     #00000066;
-    background-alt:                 #E5E9F047;
-    text-color:                     #D8DEE9;
-    selected-text-color:            #000000;
-    primary:                        #A3BE8C;
-    urgent:                         #BF616A;
+  background-color:               transparent;
+  background:                     #00000066;
+  background-alt:                 #f2f2f233;
+  text-color:                     #D8DEE9;
+  selected-text-color:            #ffffff;
+  primary:                        #A3BE8C;
+  urgent:                         #BF616A;
 }
 
-
 window {
-    transparency:                   "real";
-    background-color:               @background;
-    height:                         1054px;
-    width:                          1876px;
-    location:                       northwest;
-    anchor:                         northwest;
-    x-offset:                       45;
-    y-offset:                       30;
+  border:                         0px;
+  border-radius:                  30px;
+  transparency:                   "real";
+  background-color:               @background;
+  height:                         742px;/*1054*/
+  width:                          1321px;/*1876*/
+  location:                       northwest;
+  anchor:                         northwest;
+  x-offset:                       322;/*45*/
+  y-offset:                       182;/*26*/
 }
 
 prompt {
-    enabled:                        false;
+  enabled:                        false;
 }
 
-entry  {
-    expand:                         false;
-    width:                          38em;
-    margin:                         40px -270px 20px 640px;
-    border-radius:                  12;
-    padding:                        10px 10px 10px 10px;
-    background-color:               #ffffff20;
-    border:                         0px 0px solid 0px 0px;
-    border-color:                   @text-color;
-    font:                           "SFNS Display 16";
+
+inputbar {
+  expand:                         false;
+  background-color:               #00000020;
+  border-radius:                  6;
+  margin:                         40px 360px 20px 360px;
+  padding:                        10px 10px 10px 10px;
+  position:                       north;
+  width:                          1px;
 }
+
+entry {
+  /*expand:                         false;
+  width:                          20em;
+  margin:                         40px -275px 20px 355px;
+  border-radius:                  6;
+  padding:                        10px 10px 10px 10px;
+  background-color:               #00000020;
+  border:                         0px 0px solid 0px 0px;
+  border-color:                   @text-color;
+  font:                           "SFNS Display 10";*/
+}
+
 
 listview {
-    columns:                        4;
-    margin:                         40px 120px 40px 180px;
+  columns: 6;
+  spacing: 4;
+  dynamic: false;
 }
 
 element {
-    orientation:                    vertical;
-    padding:                        8px;
-    margin:                         8px;
+  border-radius: 4;
+  orientation: vertical;
+  padding: 30 0 30 0;
 }
+
 
 mainbox {
-    padding:                        10px 40px 10px 40px;
-}
-
-element {
-    padding:                        12px;
+  children: [ inputbar, listview ];
+  padding: 10px 160px 10px 160px;
 }
 
 element normal.urgent, element alternate.urgent {
@@ -74,6 +86,7 @@ element normal.active, element alternate.active {
 element selected {
     background-color:               @background-alt;
     color:                          @selected-text-color;
+    border-radius:                  6;
 }
 
 element selected.urgent {
@@ -93,4 +106,5 @@ element-icon {
 element-text {
     expand:                         true;
     horizontal-align:               0.5;
+    margin:                         10px 15px 0px 15px;
 }

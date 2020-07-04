@@ -1,5 +1,4 @@
+sleep 5s
 killall conky
-cd "/home/rikil/.conky/Gotham"
-conky -d -c "/home/rikil/.conky/Gotham/Gotham" &
-cd "/home/rikil/.conky/Green Apple Desktop"
-conky -d -c "/home/rikil/.conky/Green Apple Desktop/conky_seamod" &
+cd "/home/rikil/.conky/Conky Seamod"
+conky -c "/home/rikil/.conky/Conky Seamod/conky_seamod" &

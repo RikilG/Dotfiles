@@ -1,24 +1,26 @@
 configuration {
-	display-drun:                   "Activate";
-	display-run:                    "Execute";
-	show-icons:                     true;
-	sidebar-mode:                   true;
-  icon-theme:                     "Flat-Remix-Blue-Dark";
-  font:                           "SFNS Display 9";
+	display-drun:					"Activate";
+	display-run:					"Execute";
+	show-icons:                    true;
+	sidebar-mode:                  true;
+	icon-theme:						"Flat-Remix-Blue-Dark";
+  font:                          "Neue Haas Unica Pro Bold 10";
+	hide-scrollbar: true;
 }
 
 * {
-	background-color:             rgba(26, 26, 26, 0.10);
+  background-color:             transparent;
+	background:          				  rgba(26, 26, 26, 0.50);
 	text-color:                   rgb(255, 255, 255);
 	selbg:                        rgb(138, 180, 248);
-	actbg:                        rgba(0, 0, 0, 0.75);
+	actbg:                        #E5E9F047;
 	urgbg:                        #e53935;
 	winbg:			     		          #26c6da;
 
 	selected-normal-foreground:  @winbg;
 	normal-foreground:           @text-color;
 	selected-normal-background:  @actbg;
-	normal-background:           @background-color;
+	normal-background:           @background;
 
 	selected-urgent-foreground:  @background-color;
 	urgent-foreground:           @text-color;
@@ -36,7 +38,7 @@ configuration {
 	hide-scrollbar:              "true";
 	margin:                      0px;
 	padding:                     0px;
-	font:												"Roboto medium 10";
+	font:												"Neue Haas Unica Pro Bold 10";
 }
 
 window {
@@ -44,7 +46,7 @@ window {
 	anchor:		 west;
 	x-offset: 0px;
 	height:		 100%;
-	width:		 400px;
+	width:		 350px;
 	margin-right: 60px;
 	orientation: horizontal;
 	children:	 [mainbox];
@@ -54,15 +56,15 @@ mainbox {
 	spacing:  0em;
 	padding: 0px;
 	width:200px;
-	children: [ inputbar, listview, sidebar ];
+	children: [ inputbar, listview ]; /* children: [ inputbar, listview, sidebar ]; */
 	expand: true;
 }
 
-button { padding: 5px 2px; }
+button { padding: 10px 2px; }
 
 button selected {
-	background-color: @active-background;
-	text-color:       @background-color;
+	background-color: @act-bg;
+	text-color:       @text-color;
 }
 
 inputbar {
@@ -76,27 +78,32 @@ textbox-prompt-colon {
  }
 
 listview {
-	spacing: 0em;
+	spacing: 1px;
 	dynamic: false;
 	cycle:   true;
 }
 
 element {
-	padding: 16px;
-	border:  0 0 0 5px solid;
+	padding:							16px;
+	border: 						 	0 0 0 0px solid;
+	border-radius:				6;
+	margin:								0 17 0 17;
+	background-color: 		rgba(28, 26, 20, 1);
 }
 
 entry {
-	expand:         true;
-	text-color:     @normal-foreground;
-	background-color: rgb(26, 26, 26, 0.10);
-	vertical-align: 1;
-	padding:        12px;
-	font:            "Roboto medium 13";
+	expand:         			true;
+	text-color:						@normal-foreground;
+	background-color:		 	#ffffff20;
+	vertical-align: 			0.5;
+	padding:        			14px;
+	font:            			"Neue Haas Unica Pro Bold 9";
+	margin:								16 16 16 16;
+	border-radius:				6;
 }
 
 element normal.normal {
-	background-color: @normal-background;
+	background-color: #00000000;     /*@normal-background;*/
 	text-color:       @normal-foreground;
 }
 
@@ -112,9 +119,9 @@ element normal.active {
 
 element selected.normal {
 	background-color: @selected-normal-background;
-	text-color:       @selected-normal-foreground;
+	text-color:      	@text-color;
 	padding: 16px;
-	border:           0 0 0 5px solid;
+	border:           0 0 0 0px solid;
 	border-color:	    @active-background;
 }
 
@@ -129,7 +136,7 @@ element selected.active {
 }
 
 element alternate.normal {
-	background-color: @normal-background;
+	background-color: #00000000;							/*@normal-background;*/
 	text-color:       @normal-foreground;
 }
 
@@ -146,4 +153,9 @@ element alternate.active {
 element-icon {
     size:                           24;
     border:                         0px;
+}
+
+element-text {
+    expand:                         true;
+    horizontal-align:               0.0;
 }

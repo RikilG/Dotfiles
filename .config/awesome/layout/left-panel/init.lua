@@ -6,7 +6,7 @@ local dpi = require('beautiful').xresources.apply_dpi
 
 local left_panel = function(screen)
   local action_bar_width = dpi(45) -- 48
-  local panel_content_width = dpi(400)
+  local panel_content_width = dpi(350) -- 400
 
   local panel =
     wibox {
@@ -70,6 +70,11 @@ local left_panel = function(screen)
     panel:get_children_by_id('panel_content')[1].visible = false
     backdrop.visible = false
     panel:emit_signal('closed')
+  end
+
+  -- Hide this panel when app dashboard is called.
+  function panel:HideDashboard()
+    closePanel()
   end
 
   function panel:toggle(should_run_rofi)

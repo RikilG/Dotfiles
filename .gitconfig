@@ -3,3 +3,5 @@
 	name = RikilG
 [core]
 	editor = code --wait
+[alias]
+	ll = log --graph --format=\"%C(yellow)%h%C(red)%d%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(blue)<%an>%C(reset)\"

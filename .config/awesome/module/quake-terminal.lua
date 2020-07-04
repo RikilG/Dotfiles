@@ -1,5 +1,7 @@
+local gears = require('gears')
 local spawn = require('awful.spawn')
 local app = require('configuration.apps').default.quake
+-- local awful = require('awful')
 
 local quake_id = 'notnil'
 local quake_client
@@ -16,6 +18,7 @@ end
 
 function open_quake()
   quake_client.hidden = false
+  quake_client:emit_signal('request::activate')
 end
 
 function close_quake()
@@ -48,6 +51,13 @@ _G.client.connect_signal(
       c.sticky = true
       c.hidden = not opened
       c.maximized_horizontal = true
+      c.hide_titlebars = true
+      c.skip_center = true
+      c.round_corners = false
+      c.shape = function(cr, w, h)
+        gears.shape.rectangle(cr, w, h)
+      end
+    -- awful.placement.top(c)
     end
   end
 )

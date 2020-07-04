@@ -16,8 +16,8 @@ return function(_, panel)
       widget = mat_icon
     },
     wibox.widget {
-      text = 'Hello, Rikil! Need Something?',
-      font = 'Iosevka Regular 12',
+      text = 'Hello Rikil! Need Something?',
+      font = 'SFNS Display Regular 12',
       widget = wibox.widget.textbox,
       align = center
     },
@@ -46,8 +46,8 @@ return function(_, panel)
       widget = mat_icon
     },
     wibox.widget {
-      text = 'System Session Controls',
-      font = 'Iosevka Regular 12',
+      text = 'End work session',
+      font = 'SFNS Display Regular 12',
       widget = wibox.widget.textbox
     },
     clickable = true,
@@ -76,32 +76,24 @@ return function(_, panel)
     widget = wibox.widget.separator
   }
 
-  local topSeparator = wibox.widget {
+  local topBotSeparator = wibox.widget {
     orientation = 'horizontal',
-    forced_height = 20,
+    forced_height = 15,
     opacity = 0,
     widget = wibox.widget.separator,
-  }
-
-  local bottomSeparator = wibox.widget {
-    orientation = 'horizontal',
-    forced_height = 5,
-    opacity = 0,
-    widget = wibox.widget.separator,
-
   }
 
   return wibox.widget {
     layout = wibox.layout.align.vertical,
     {
-      topSeparator,
+      topBotSeparator,
       layout = wibox.layout.fixed.vertical,
       {
-        wibox.widget {
+        {
           search_button,
-          bg = '#ffffff20',     --beautiful.background.hue_800,
+          bg = beautiful.bg_modal, 
           shape = function(cr, w, h)
-                    gears.shape.rounded_rect(cr, w, h, 28)
+                    gears.shape.rounded_rect(cr, w, h, beautiful.modal_radius)
                   end,
           widget = wibox.container.background,
         },
@@ -109,25 +101,27 @@ return function(_, panel)
       },
       separator,
       require('layout.left-panel.dashboard.quick-settings'),
+      separator,
       require('layout.left-panel.dashboard.hardware-monitor'),
+      separator,
       require('layout.left-panel.dashboard.action-center'),
     },
     nil,
     {
 
       layout = wibox.layout.fixed.vertical,
-      wibox.widget{
-        wibox.widget{
+      {
+        {
           exit_button,
-          bg = '#ffffff20',--beautiful.background.hue_800,
+          bg = beautiful.bg_modal,
           widget = wibox.container.background,
           shape = function(cr, w, h)
-                    gears.shape.rounded_rect(cr, w, h, 12)
+                    gears.shape.rounded_rect(cr, w, h, beautiful.modal_radius)
                   end,
         },
         widget = mat_list_item,
       },
-      bottomSeparator
+      topBotSeparator
     }
   }
 end

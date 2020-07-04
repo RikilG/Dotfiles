@@ -8,7 +8,7 @@ local apps = require('configuration.apps')
 local dpi = require('beautiful').xresources.apply_dpi
 
 -- Appearance
-local icon_size = beautiful.exit_screen_icon_size or dpi(140)
+local icon_size = beautiful.exit_screen_icon_size or dpi(90)
 
 local buildButton = function(icon)
   local abutton =
@@ -115,7 +115,7 @@ exit_screen =
   }
 )
 
-exit_screen.bg = beautiful.background.hue_800 .. 'dd'
+exit_screen.bg = beautiful.background.hue_800
 exit_screen.fg = beautiful.exit_screen_fg or beautiful.wibar_fg or '#FEFEFE'
 
 local exit_screen_grabber

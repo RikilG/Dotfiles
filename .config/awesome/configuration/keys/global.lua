@@ -18,14 +18,21 @@ local globalKeys =
       awful.spawn(apps.default.terminal)
     end,
     { description = "Open Terminal", group = "launcher"}),
-
-    awful.key(
-      {modkey}, 'r',
-      function()
-        awful.util.spawn(apps.default.rofiappmenu)
-      end,
-      { description = "Open Rofi", group = "launcher"}),
-
+  awful.key(
+    {modkey}, 'r',
+    function()
+      awful.util.spawn(apps.default.rofiappmenu)
+      _G.screen.primary.left_panel:HideDashboard()
+    end,
+  { description = "Open Application Drawer", group = "launcher"}),
+  awful.key(
+    {modkey}, 'a',
+    function()
+      if require('widget.notification-center') then
+        _G.screen.primary.right_panel:toggle()
+      end
+    end,
+  { description = "Open Notification Center", group = "launcher"}),
   awful.key(
     {modkey, "Shift"}, 'f',
     function()
@@ -36,55 +43,85 @@ local globalKeys =
   awful.key(
     {modkey}, 'e',
     function()
-      -- awful.spawn("nemo")
-      awful.spawn("dolphin")
+      awful.spawn("nemo")
     end,
     { description = "Open file manager", group = "launcher"}),
 
   awful.key(
     {"Control", "Shift"}, 'Escape',
     function()
-      -- awful.spawn("gnome-system-monitor")
-      awful.spawn("htop")
+      awful.spawn("ksysguard")
     end,
     { description = "Open system monitor", group = "launcher"}),
 
-
   -- Screen Shots
-  -- Screen Shot and Save
-  awful.key({ }, "Print", function () awful.util.spawn("snap full") end),
-
-  -- Screen Shot Area and Save
-  awful.key({modkey, "Shift"}, 's', function () awful.util.spawn("snap area") end),
-
-  -- Toggle System Tray
-  awful.key({ modkey }, '=', function ()
-      awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
-    end, {description = "Toggle systray visibility", group = "custom"}),
-
-  -- Tag browsing
-  awful.key({modkey}, 'k', awful.tag.viewprev, {description = 'view previous', group = 'tag'}),
-  awful.key({modkey}, 'j', awful.tag.viewnext, {description = 'view next', group = 'tag'}),
   awful.key(
-    {modkey}, 
-    'Tab', 
-    --awful.tag.history.restore,
+  { }, "Print",
+  function ()
+    apps.bins.fullShot()
+  end,
+  { description = "Fullscreen screenshot", group = "Miscellaneous"}),
+  awful.key(
+  {modkey, "Shift"}, 's',
+  function ()
+    apps.bins.areaShot()
+  end,
+  { description = "Area screenshot", group = "Miscellaneous"}),
+  awful.key(
+  {modkey, altkey}, 's',
+  function ()
+    apps.bins.areaShot()
+  end,
+  { description = "Selected screenshot", group = "Miscellaneous"}),
+
+  -- Music Widget
+  awful.key(
+    {modkey}, 'm',
     function()
-      -- for c in awful.client.iterate(function (x) return true end) do
-      --   client.focus = c
-      --   client.focus:raise()
-      -- end
-      awful.client.focus.byidx(-1)
-        if client.focus then
-            client.focus:raise()
+      if require("widget.music") then
+        _G.toggle_player()
       end
     end,
-    {description = 'alt tab switch', group = 'tag'}
-  ),
+  { description = "Open Music Widget", group = "launcher"}),
+
+  -- Toggle System Tray
+  awful.key({ 'Control' }, 'Escape', function ()
+    awesome.emit_signal("toggle_tray")
+  end, {description = "Toggle systray visibility", group = "Miscellaneous"}),
+
+  -- Tag browsing
+  awful.key({modkey}, 'w', awful.tag.viewprev, {description = 'view previous', group = 'tag'}),
+  awful.key({modkey}, 's', awful.tag.viewnext, {description = 'view next', group = 'tag'}),
+  awful.key({modkey}, 'Escape', awful.tag.history.restore, {description = 'go back', group = 'tag'}),
+
+  -- Non-empty tag browsing
+  awful.key({ modkey, "Control" }, "w",
+    function ()
+      -- tag_view_nonempty(-1)
+      local s = sc or awful.screen.focused()
+      for i = 1, #s.tags do
+        awful.tag.viewidx(-1, s)
+        if #s.clients > 0 then
+          return
+        end
+      end
+  end, {description = "view previous non-empty tag", group = "tag"}),
+  awful.key({ modkey, "Control" }, "s",
+    function ()
+      -- tag_view_nonempty(1)
+      local s = sc or awful.screen.focused()
+      for i = 1, #s.tags do
+        awful.tag.viewidx(1, s)
+        if #s.clients > 0 then
+          return
+        end
+      end
+  end, {description = "view next non-empty tag", group = "tag"}),
+  
   -- Default client focus
   awful.key(
     {modkey},
-    'l',
+    'd',
     function()
       awful.client.focus.byidx(1)
     end,
@@ -92,23 +129,39 @@ local globalKeys =
   ),
   awful.key(
     {modkey},
-    'h',
+    'a',
     function()
       awful.client.focus.byidx(-1)
     end,
     {description = 'focus previous by index', group = 'client'}
   ),
-  -- awful.key(
-  --   {modkey},
-  --   '`',
-  --   function()
-  --     _G.screen.primary.left_panel:toggle(true)
-  --   end,
-  --   {description = 'show main menu', group = 'awesome'}
-  -- ),
+  awful.key(
+    { modkey, "Shift"   },
+     "d",
+      function ()
+        awful.client.swap.byidx(1)
+      end,
+      {description = "swap with next client by index", group = "client"}
+    ),
+    awful.key(
+      { modkey, "Shift"   },
+       "a",
+        function ()
+          awful.client.swap.byidx(-1)
+        end,
+        {description = "swap with next client by index", group = "client"}
+      ),
+  awful.key(
+    {modkey},
+    'r',
+    function()
+      _G.screen.primary.left_panel:toggle(true)
+    end,
+    {description = 'Open Sidebar', group = 'launcher'}
+  ),
   awful.key({modkey}, 'u', awful.client.urgent.jumpto, {description = 'jump to urgent client', group = 'client'}),
   awful.key(
-    {altkey},
+    {modkey},
     'Tab',
     function()
       awful.client.focus.history.previous()
@@ -120,7 +173,7 @@ local globalKeys =
   ),
   -- Programms
   awful.key(
-    {modkey, "Control"},
+    {modkey},
     'l',
     function()
       awful.spawn(apps.default.lock)
@@ -215,14 +268,14 @@ local globalKeys =
     {description = 'restore minimized', group = 'client'}
   ),
   -- Dropdown application
-  -- awful.key(
-  --   {modkey},
-  --   '`',
-  --   function()
-  --     _G.toggle_quake()
-  --   end,
-  --   {description = 'dropdown application', group = 'launcher'}
-  -- ),
+  awful.key(
+    {modkey},
+    '`',
+    function()
+      _G.toggle_quake()
+    end,
+    {description = 'dropdown application', group = 'launcher'}
+  ),
   -- Widgets popups
   awful.key(
     {altkey},
@@ -249,7 +302,13 @@ local globalKeys =
     {},
     'XF86MonBrightnessUp',
     function()
-      awful.spawn('xbacklight -inc 10')
+      awful.spawn('xbacklight -inc 10', false)
+      if toggleBriOSD ~= nil then
+        _G.toggleBriOSD(true)
+      end
+      if UpdateBrOSD ~= nil then
+        _G.UpdateBrOSD()
+      end
     end,
     {description = '+10%', group = 'hotkeys'}
   ),
@@ -257,7 +316,13 @@ local globalKeys =
     {},
     'XF86MonBrightnessDown',
     function()
-      awful.spawn('xbacklight -dec 10')
+      awful.spawn('xbacklight -dec 10', false)
+      if toggleBriOSD ~= nil then
+        _G.toggleBriOSD(true)
+      end
+      if UpdateBrOSD ~= nil then
+        _G.UpdateBrOSD()
+      end
     end,
     {description = '-10%', group = 'hotkeys'}
   ),
@@ -282,8 +347,14 @@ local globalKeys =
     {},
     'XF86AudioRaiseVolume',
     function()
-      -- awful.spawn('amixer -D pulse sset Master 5%+')
-      awful.spawn('pamixer -i 2')
+      -- awful.spawn('amixer -D pulse sset Master 5%+', false)
+      awful.spawn('pamixer -i 2', false)
+      if toggleVolOSD ~= nil then
+        _G.toggleVolOSD(true)
+      end
+      if UpdateVolOSD ~= nil then
+        _G.UpdateVolOSD()
+      end
     end,
     {description = 'volume up', group = 'hotkeys'}
   ),
@@ -291,8 +362,14 @@ local globalKeys =
     {},
     'XF86AudioLowerVolume',
     function()
-      -- awful.spawn('amixer -D pulse sset Master 5%-')
-      awful.spawn('pamixer -d 2')
+      -- awful.spawn('amixer -D pulse sset Master 5%-', false)
+      awful.spawn('pamixer -d 2', false)
+      if toggleVolOSD ~= nil then
+        _G.toggleVolOSD(true)
+      end
+      if UpdateVolOSD ~= nil then
+        _G.UpdateVolOSD()
+      end
     end,
     {description = 'volume down', group = 'hotkeys'}
   ),
@@ -300,8 +377,8 @@ local globalKeys =
     {},
     'XF86AudioMute',
     function()
-      -- awful.spawn('amixer -D pulse set Master 1+ toggle')
-      awful.spawn('pamixer -t')
+      -- awful.spawn('amixer -D pulse set Master 1+ toggle', false)
+      awful.spawn('pamixer -t', false)
     end,
     {description = 'toggle mute', group = 'hotkeys'}
   ),
@@ -309,9 +386,34 @@ local globalKeys =
     {},
     'XF86AudioNext',
     function()
-      --
+      awful.spawn('mpc next', false)
     end,
-    {description = 'toggle mute', group = 'hotkeys'}
+    {description = 'next music', group = 'hotkeys'}
+  ),
+  awful.key(
+    {},
+    'XF86AudioPrev',
+    function()
+      awful.spawn('mpc prev', false)
+    end,
+    {description = 'previous music', group = 'hotkeys'}
+  ),
+  awful.key(
+    {},
+    'XF86AudioPlay',
+    function()
+      awful.spawn('mpc toggle', false)
+    end,
+    {description = 'play/pause music', group = 'hotkeys'}
+
+  ),
+  awful.key(
+    {},
+    'XF86AudioMicMute',
+    function()
+      awful.spawn('amixer set Capture toggle', false)
+    end,
+    {description = 'Mute Microphone', group = 'hotkeys'}
   ),
   awful.key(
     {},
@@ -331,9 +433,17 @@ local globalKeys =
   ),
   awful.key(
     {},
+    'XF86Display',
+    function()
+      awful.spawn('arandr', false)
+    end,
+    {description = 'arandr', group = 'hotkeys'}
+  ),
+  awful.key(
+    {},
     'XF86KbdBrightnessUp',
     function()
-      awful.spawn('/usr/local/bin/kb-light.py + 1')
+      awful.spawn('/usr/local/bin/kb-light.py + 1', false)
     end,
     {description = 'Keyboard Brightness Up', group = 'hotkeys'}
   ),
@@ -341,7 +451,7 @@ local globalKeys =
     {},
     'XF86KbdBrightnessDown',
     function()
-      awful.spawn('/usr/local/bin/kb-light.py - 1')
+      awful.spawn('/usr/local/bin/kb-light.py - 1', false)
     end,
     {description = 'Keyboard Brightness Down', group = 'hotkeys'}
   ),
@@ -349,7 +459,7 @@ local globalKeys =
     {},
     'XF86TouchpadToggle',
     function()
-      awful.spawn('/usr/local/bin/touchpad_toggle.sh')
+      awful.spawn('/usr/local/bin/touchpad_toggle.sh', false)
     end,
     {description = 'Touchpad Toggle', group = 'hotkeys'}
   ),
@@ -362,6 +472,7 @@ local globalKeys =
     {description = 'show main menu', group = 'awesome'}
   )
 )
+
 
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it works on any keyboard layout.

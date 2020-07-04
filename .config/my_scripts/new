@@ -3,6 +3,10 @@
 TEMPLATE_PATH="/home/rikil/.config/my_scripts/new_templates"
 INFO_FILE="$TEMPLATE_PATH/USER_INFO"
 
+help () {
+    echo ""
+}
+
 yes_no () {
     local temp
     read temp
@@ -22,6 +26,7 @@ new_dir () {
     fi
     mkdir -p $1
     echo "$1 successfully created!"
+    cd $1
 }
 
 gitignore () {
@@ -100,7 +105,9 @@ open_template () {
     exec nvim $2
 }
 
-if [[ $1 == "folder" || $1 == "dir" || $1 == "directory" ]]; then
+if [[ $1 == "help" || $1 == "-help" || $1 == "--help" ]]; then
+    show_help
+elif [[ $1 == "folder" || $1 == "dir" || $1 == "directory" ]]; then
     new_dir $2
 elif [[ $1 == "gi" || $1 == "gitignore" ]]; then
     shift

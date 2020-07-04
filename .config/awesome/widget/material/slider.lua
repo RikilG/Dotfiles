@@ -79,7 +79,6 @@ local function new(args)
   ret._private.progress_bar =
     wibox.widget {
     max_value = 100,
-    -- max_value = 150,
     value = 25,
     forced_height = dpi(6),
     paddings = 0,

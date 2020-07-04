@@ -1,0 +1,21 @@
+[Desktop Entry]
+Categories=Utilities
+Comment[en_US]=Remount all drives for execute permission
+Comment=Remount all drives for execute permission
+Encoding=UTF-8
+Exec=/home/rikil/.config/my_scripts/remount.sh
+GenericName[en_US]=Software
+GenericName=Software
+Icon=drive-harddisk-root
+MimeType=
+Name[en_US]=Remount
+Name=Remount
+Path=
+StartupNotify=true
+Terminal=true
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

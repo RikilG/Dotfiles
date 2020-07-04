@@ -1,3 +1,4 @@
+echo "Hello, Rikil!\n"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -99,34 +100,11 @@ setopt autopushd
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vim=nvim
-alias wifi='nmcli device wifi'
-alias cls=clear
-
-autoload -U compinit
-compinit
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-alias dotfiles='/usr/bin/git --git-dir=/home/rikil/.dotfiles/ --work-tree=/home/rikil'
-alias STASH='cd /mnt/STASH/'
-alias DC='cd /mnt/DC/DC++/'
-alias PROJ='cd /mnt/STASH/@RIKIL/_Projects/'
-alias NOTES='cd /mnt/STASH/@RIKIL/Notes/'
-alias RIKIL='cd /mnt/STASH/@RIKIL/'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -148,3 +126,51 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 conda activate main
+
+# <<<<<<<<<<<< USER CONFIGURATIONS >>>>>>>>>>>>>>>>>>>
+# Custom user functions
+
+# FZF git log browser
+fzf_git_log() {
+    local selections=$(
+    git ll --color=always "$@" | 
+        fzf --ansi --no-sort --height 100% \
+            --preview "echo {} | grep -o '[a-f0-9]\{7\}' | head -1 | xargs -I@ sh -c 'git show --color=always @'")
+    if [[ -n $selections ]]; then
+        local commits=$(echo "$selections" | cut -d' ' -f2 | tr '\n' ' ')
+        git show $commits
+    fi
+}
+alias gll='fzf_git_log'
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias vim=nvim
+alias wifi='nmcli device wifi'
+alias cls=clear
+
+autoload -U compinit
+compinit
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+alias dotfiles='/usr/bin/git --git-dir=/home/rikil/.dotfiles/ --work-tree=/home/rikil'
+alias DC='cd /mnt/DC/DC++/'
+alias CC='cd /mnt/STASH/@RIKIL/_Projects/@programming/CC/'
+alias PROJ='cd /mnt/STASH/@RIKIL/_Projects/'
+alias NOTES='cd /mnt/STASH/@RIKIL/Notes/'
+alias RIKIL='cd /mnt/STASH/@RIKIL/'
+alias STASH='cd /mnt/STASH/'
+alias 'cd DC'='cd /mnt/DC/DC++/'
+alias 'cd CC'='cd /mnt/STASH/@RIKIL/_Projects/@programming/CC/'
+alias 'cd PROJ'='cd /mnt/STASH/@RIKIL/_Projects/'
+alias 'cd NOTES'='cd /mnt/STASH/@RIKIL/Notes/'
+alias 'cd RIKIL'='cd /mnt/STASH/@RIKIL/'
+alias 'cd STASH'='cd /mnt/STASH/'
+
+# FZF additions

@@ -1,12 +1,14 @@
 #include<bits/stdc++.h>
 
 using namespace std;
+typedef long long ll;
+
+void solve() {
+
+}
 
 int main() {
-    int tc;
-    cin >> tc;
-    while(tc--) {
-
-    }
+    ll tc = 1; cin >> tc;
+    while(tc--) solve();
     return 0;
 }

@@ -33,7 +33,8 @@ minimum_size 300 900
 maximum_width 500
 
 own_window yes
-own_window_type desktop
+#own_window_type desktop
+own_window_type override
 own_window_transparent no
 own_window_hints undecorated,sticky,skip_taskbar,skip_pager,below
 own_window_colour 000000

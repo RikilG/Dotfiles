@@ -1,5 +1,8 @@
 -- This widget is messy AF
+-- It is a hackish way to disable and enable blur effect in compton because
+-- There's no native way to do it. Implementing DBUS integration would be useful in here but it isnt supported
 -- It uses unix command to change some strings in compton config
+
 local awful = require('awful')
 local naughty = require('naughty')
 local wibox = require('wibox')
@@ -9,10 +12,9 @@ local dpi = require('beautiful').xresources.apply_dpi
 local watch = require('awful.widget.watch')
 local mat_list_item = require('widget.material.list-item')
 local filesystem = require('gears.filesystem')
-
+local apps = require('configuration.apps')
 local HOME = os.getenv('HOME')
 local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/action-center/icons/'
-local cmd = 'grep -F "blur-background-frame = false;" ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf ' .. "| tr -d '[\\-\\;\\=\\ ]' "
 local frameStatus
 local widgetIconName
 
@@ -22,6 +24,7 @@ local widget =
   wibox.widget {
   {
     id = 'icon',
+    image = PATH_TO_ICONS .. 'toggled-off' .. '.svg',
     widget = wibox.widget.imagebox,
     resize = true
   },
@@ -39,9 +42,11 @@ local function update_icon()
   end
 end
 
-------
+local check_blur_status = [[
 
--- The cmd variable is declared above
+grep -F "blur-background-frame = false;" ]] .. filesystem.get_configuration_dir() .. [[/configuration/compton.conf | tr -d '[\-\;\=\ ]'
+
+]]
 -- It checks the line "blur-background-frame: false;"
 -- I use 'tr' shell command to remove the special characters
 -- because lua is choosy on MATCH method
@@ -51,64 +56,39 @@ end
 -- The rest is history
 local frameChecker
 function checkFrame()
-  awful.spawn.easy_async_with_shell(cmd, function( stdout )
+  awful.spawn.easy_async_with_shell(check_blur_status, function( stdout )
     frameChecker = stdout:match('blurbackgroundframefalse')
     if frameChecker == nil then
       frameStatus = true
       update_icon()
     else
       frameStatus = false
-      update_icon()
     end
+    
+    -- Update icon
+    update_icon()
   end)
 end
 
-
--- Commands that will be executed when I toggle the button
-blurDisable = {
-  'sed -i -e "s/blur-background-frame = true/blur-background-frame = false/g" ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
-  'compton --config ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
-  'notify-send "Blur effect disabled"'
-}
-blurEnable = {
-  'sed -i -e "s/blur-background-frame = false/blur-background-frame = true/g" ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
-  'compton --config ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
-  'notify-send "Blur effect enabled"'
-}
-
--- This runs all the commands above
-local function run_once(cmd)
-  local findme = cmd
-  local firstspace = cmd:find(' ')
-  if firstspace then
-    findme = cmd:sub(0, firstspace - 1)
-  end
-  awful.spawn.with_shell(string.format('pgrep -u $USER -x %s > /dev/null || (%s)', findme, cmd))
-end
 
 
 -- The Toggle button backend
 local function toggle_compositor()
   if(frameStatus == true) then
-    awful.spawn.with_shell('kill -9 $(pidof compton)')
-    for _, app in ipairs(blurDisable) do
-      run_once(app)
-    end
+    apps.bins.disableBlur()
     frameStatus = false
-    update_icon()
   else
-    awful.spawn.with_shell('kill -9 $(pidof compton)')
-    for _, app in ipairs(blurEnable) do
-      run_once(app)
-    end
+    apps.bins.enableBlur()
     frameStatus = true
-    update_icon()
   end
+
+  -- Update icon
+  update_icon()
+
 end
 
+-- Check blur status
 checkFrame()
------------------------------------------------------------------------------------------------------------------
-
 
 local compton_button = clickable_container(wibox.container.margin(widget, dpi(7), dpi(7), dpi(7), dpi(7))) -- 4 is top and bottom margin
 compton_button:buttons(
@@ -126,21 +106,24 @@ compton_button:buttons(
 
 local settingsName = wibox.widget {
   text = 'Window Effects',
-  font = 'Iosevka Regular 10',
+  font = 'SFNS Display 11',
   align = 'left',
   widget = wibox.widget.textbox
 }
 
-local content =   wibox.widget {
-    settingsName,
-    compton_button,
-    bg = '#ffffff20',
-    shape = gears.shape.rounded_rect,
-    widget = wibox.container.background(settingsName),
-    layout = wibox.layout.ratio.horizontal,
 
-  }
-content:set_ratio(1, .85)
+local content =   wibox.widget {
+  {
+    settingsName,
+    layout = wibox.layout.fixed.horizontal,
+  },
+  nil,
+  {
+    compton_button,
+    layout = wibox.layout.fixed.horizontal,
+  },
+  layout = wibox.layout.align.horizontal,
+}
 
 local comptonButton =  wibox.widget {
   wibox.widget {

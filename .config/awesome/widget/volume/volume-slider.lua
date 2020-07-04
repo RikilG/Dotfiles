@@ -5,6 +5,7 @@ local mat_icon_button = require('widget.material.icon-button')
 local icons = require('theme.icons')
 local watch = require('awful.widget.watch')
 local spawn = require('awful.spawn')
+local awful = require('awful')
 
 local slider =
   wibox.widget {
@@ -15,23 +16,28 @@ local slider =
 slider:connect_signal(
   'property::value',
   function()
-    -- spawn('amixer -D pulse sset Master ' .. slider.value .. '%')
-    spawn('pamixer --set-volume ' .. slider.value .. ' --allow-boost')
+    spawn('amixer -D pulse sset Master ' .. slider.value .. '%', false)
   end
 )
 
 watch(
-  -- [[bash -c "amixer -D pulse sget Master"]],
-  [[bash -c "pamixer --get-volume"]],
-  1,
+  [[bash -c "amixer -D pulse sget Master"]],
+  2,
   function(_, stdout)
-    -- local mute = string.match(stdout, '%[(o%D%D?)%]')
-    -- local volume = string.match(stdout, '(%d?%d?%d)%%')
-    local volume = stdout
+    local mute = string.match(stdout, '%[(o%D%D?)%]')
+    local volume = string.match(stdout, '(%d?%d?%d)%%')
     slider:set_value(tonumber(volume))
     collectgarbage('collect')
   end
 )
+
+function UpdateVolOSD()
+  awful.spawn.easy_async_with_shell("bash -c 'amixer -D pulse sget Master'", function( stdout )
+    local mute = string.match(stdout, '%[(o%D%D?)%]')
+    local volume = string.match(stdout, '(%d?%d?%d)%%')
+    slider:set_value(tonumber(volume))
+  end, false)
+end
 
 local icon =
   wibox.widget {

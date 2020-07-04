@@ -18,7 +18,7 @@ local tags = {
   {
     icon = icons.code,
     type = 'code',
-    defaultApp = 'geany',
+    defaultApp = 'code',
     screen = 1
   },
  --[[ {
@@ -36,19 +36,25 @@ local tags = {
   {
     icon = icons.music,
     type = 'music',
-    defaultApp = 'youtube-music',
+    defaultApp = 'konsole -e ncmpcpp',
     screen = 1
   },
   {
     icon = icons.game,
     type = 'game',
-    defaultApp = '',
+    defaultApp = 'supertuxkart',
     screen = 1
   },
   {
     icon = icons.art,
     type = 'art',
     defaultApp = 'gimp',
+    screen = 1
+  },
+  {
+    icon = icons.vbox,
+    type = 'virtualbox',
+    defaultApp = 'virtualbox',
     screen = 1
   },
   {
@@ -65,25 +71,25 @@ awful.layout.layouts = {
   awful.layout.suit.max
 }
 
-awful.screen.connect_for_each_screen(
-  function(s)
-    for i, tag in pairs(tags) do
-      awful.tag.add(
-        i,
-        {
-          icon = tag.icon,
-          icon_only = true,
-          layout = awful.layout.suit.spiral.dwindle,
-          gap_single_client = false,
-          gap = 4,
-          screen = s,
-          defaultApp = tag.defaultApp,
-          selected = i == 1
-        }
-      )
-    end
+
+screen.connect_signal("request::desktop_decoration", function(s)
+  for i, tag in pairs(tags) do
+    awful.tag.add(
+      i,
+      {
+        icon = tag.icon,
+        icon_only = true,
+        layout = awful.layout.suit.spiral.dwindle,
+        gap_single_client = false,
+        gap = 4,
+        screen = s,
+        defaultApp = tag.defaultApp,
+        selected = i == 1
+      }
+    )
   end
-)
+end)
+
 
 _G.tag.connect_signal(
   'property::layout',
